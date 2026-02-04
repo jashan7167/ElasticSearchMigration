@@ -1,0 +1,5 @@
+# ─── ES 6.4.2 → 8.11 Migration – Python dependencies ───────────────
+# Install with:  pip install -r requirements.txt
+
+requests>=2.28,<3.0          # HTTP calls to both clusters (no SDK needed)
+confluent-kafka>=2.0,<3.0    # Kafka consumer for CDC
