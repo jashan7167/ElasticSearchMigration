@@ -1,0 +1,2340 @@
+[2026-02-04 11:44:14] [INFO    ] [main] ============================================================
+[2026-02-04 11:44:14] [INFO    ] [main]   ES 6.4.2 → 8.11 Migration  |  2026-02-04 11:44:14
+[2026-02-04 11:44:14] [INFO    ] [main] ============================================================
+[2026-02-04 11:44:14] [INFO    ] [main] ── Preflight checks ──
+[2026-02-04 11:44:14] [ERROR   ] [main] CANNOT reach OLD cluster at http://localhost:9201 : ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+[2026-02-04 12:12:44] [INFO    ] [main] ============================================================
+[2026-02-04 12:12:44] [INFO    ] [main]   ES 6.4.2 → 8.11 Migration  |  2026-02-04 12:12:44
+[2026-02-04 12:12:44] [INFO    ] [main] ============================================================
+[2026-02-04 12:12:44] [INFO    ] [main] ── Preflight checks ──
+[2026-02-04 12:12:52] [INFO    ] [main] OLD  cluster reachable – version 6.4.2  (http://localhost:9201)
+[2026-02-04 12:12:55] [INFO    ] [main] NEW  cluster reachable – version 8.11.0  (http://localhost:9200)
+[2026-02-04 12:12:55] [INFO    ] [main] ── Preflight OK ──
+
+[2026-02-04 12:12:55] [INFO    ] [main] 
+[PHASE 1] Starting Kafka consumer in background …
+[2026-02-04 12:12:55] [INFO    ] [main] Kafka consumer thread started (tid=135212428187328)
+[2026-02-04 12:12:58] [INFO    ] [main] 
+[PHASE 2] Starting bulk reindex …
+[2026-02-04 12:13:02] [INFO    ] [reindex_engine] Discovered 0 indices to migrate: []
+[2026-02-04 12:13:02] [INFO    ] [main] [PHASE 2] Bulk reindex complete.
+[2026-02-04 12:13:02] [INFO    ] [main] 
+[PHASE 3] Kafka consumer already stopped / was not started.
+[2026-02-04 12:13:02] [INFO    ] [main] 
+[PHASE 4] Running validation …
+[2026-02-04 12:24:52] [INFO    ] [main] ============================================================
+[2026-02-04 12:24:52] [INFO    ] [main]   ES 6.4.2 → 8.11 Migration  |  2026-02-04 12:24:52
+[2026-02-04 12:24:52] [INFO    ] [main] ============================================================
+[2026-02-04 12:24:52] [INFO    ] [main] ── Preflight checks ──
+[2026-02-04 12:24:52] [INFO    ] [main] OLD  cluster reachable – version 6.4.2  (http://localhost:9201)
+[2026-02-04 12:24:52] [INFO    ] [main] NEW  cluster reachable – version 8.11.0  (http://localhost:9200)
+[2026-02-04 12:24:52] [INFO    ] [main] ── Preflight OK ──
+
+[2026-02-04 12:24:52] [INFO    ] [main] 
+[PHASE 1] Starting Kafka consumer in background …
+[2026-02-04 12:24:52] [INFO    ] [main] Kafka consumer thread started (tid=124270093346496)
+[2026-02-04 12:24:55] [INFO    ] [main] 
+[PHASE 2] Starting bulk reindex …
+[2026-02-04 12:24:55] [INFO    ] [reindex_engine] Discovered 0 indices to migrate: []
+[2026-02-04 12:24:55] [INFO    ] [main] [PHASE 2] Bulk reindex complete.
+[2026-02-04 12:24:55] [INFO    ] [main] 
+[PHASE 3] Kafka consumer already stopped / was not started.
+[2026-02-04 12:24:55] [INFO    ] [main] 
+[PHASE 4] Running validation …
+[2026-02-04 12:24:57] [INFO    ] [validator] New cluster health: green  (clusters=docker-cluster, nodes=1)
+[2026-02-04 12:24:57] [INFO    ] [validator] 
+======================================================================
+        ELASTICSEARCH MIGRATION VALIDATION REPORT
+        Generated: 2026-02-04 12:24:57
+======================================================================
+
+── CLUSTER HEALTH (new 8.x) ─────────────────────────────────────
+   Status        : GREEN
+   Cluster name  : docker-cluster
+   Nodes         : 1
+   Shards        : active=0 / unassigned=0
+
+── INDEX COUNT COMPARISON ────────────────────────────────────────
+   Index                                    Old      New   Diff  Status
+   -----------------------------------------------------------------
+   -----------------------------------------------------------------
+   TOTAL                                      0        0     +0  ✓ ALL MATCH
+
+── DOCUMENT SAMPLE CHECKS ────────────────────────────────────────
+   Total: 0/0 docs verified
+
+======================================================================
+  END OF REPORT
+======================================================================
+[2026-02-04 12:24:57] [INFO    ] [main] 
+── Migration finished in 5.2 seconds ──
+[2026-02-04 12:36:10] [INFO    ] [main] ============================================================
+[2026-02-04 12:36:10] [INFO    ] [main]   ES 6.4.2 → 8.11 Migration  |  2026-02-04 12:36:10
+[2026-02-04 12:36:10] [INFO    ] [main] ============================================================
+[2026-02-04 12:36:10] [INFO    ] [main] ── Preflight checks ──
+[2026-02-04 12:36:10] [INFO    ] [main] OLD  cluster reachable – version 6.4.2  (http://localhost:9201)
+[2026-02-04 12:36:10] [INFO    ] [main] NEW  cluster reachable – version 8.11.0  (http://localhost:9200)
+[2026-02-04 12:36:10] [INFO    ] [main] ── Preflight OK ──
+
+[2026-02-04 12:36:10] [INFO    ] [main] 
+[PHASE 1] Starting Kafka consumer in background …
+[2026-02-04 12:36:10] [INFO    ] [main] Kafka consumer thread started (tid=129534997173952)
+[2026-02-04 12:36:13] [INFO    ] [main] 
+[PHASE 2] Starting bulk reindex …
+[2026-02-04 12:36:13] [INFO    ] [reindex_engine] Discovered 0 indices to migrate: []
+[2026-02-04 12:36:13] [INFO    ] [main] [PHASE 2] Bulk reindex complete.
+[2026-02-04 12:36:13] [INFO    ] [main] 
+[PHASE 3] Kafka consumer already stopped / was not started.
+[2026-02-04 12:36:13] [INFO    ] [main] 
+[PHASE 4] Running validation …
+[2026-02-04 12:36:15] [INFO    ] [validator] New cluster health: green  (clusters=docker-cluster, nodes=1)
+[2026-02-04 12:36:15] [INFO    ] [validator] 
+======================================================================
+        ELASTICSEARCH MIGRATION VALIDATION REPORT
+        Generated: 2026-02-04 12:36:15
+======================================================================
+
+── CLUSTER HEALTH (new 8.x) ─────────────────────────────────────
+   Status        : GREEN
+   Cluster name  : docker-cluster
+   Nodes         : 1
+   Shards        : active=0 / unassigned=0
+
+── INDEX COUNT COMPARISON ────────────────────────────────────────
+   Index                                    Old      New   Diff  Status
+   -----------------------------------------------------------------
+   -----------------------------------------------------------------
+   TOTAL                                      0        0     +0  ✓ ALL MATCH
+
+── DOCUMENT SAMPLE CHECKS ────────────────────────────────────────
+   Total: 0/0 docs verified
+
+======================================================================
+  END OF REPORT
+======================================================================
+[2026-02-04 12:36:15] [INFO    ] [main] 
+── Migration finished in 5.1 seconds ──
+[2026-02-04 12:38:14] [INFO    ] [main] ============================================================
+[2026-02-04 12:38:14] [INFO    ] [main]   ES 6.4.2 → 8.11 Migration  |  2026-02-04 12:38:14
+[2026-02-04 12:38:14] [INFO    ] [main] ============================================================
+[2026-02-04 12:38:14] [INFO    ] [main] ── Preflight checks ──
+[2026-02-04 12:38:15] [INFO    ] [main] OLD  cluster reachable – version 6.4.2  (http://localhost:9201)
+[2026-02-04 12:38:15] [INFO    ] [main] NEW  cluster reachable – version 8.11.0  (http://localhost:9200)
+[2026-02-04 12:38:15] [INFO    ] [main] ── Preflight OK ──
+
+[2026-02-04 12:38:15] [INFO    ] [main] 
+[PHASE 1] Starting Kafka consumer in background …
+[2026-02-04 12:38:15] [INFO    ] [main] Kafka consumer thread started (tid=133400869553856)
+[2026-02-04 12:38:15] [INFO    ] [kafka_consumer] No prefix set – subscribing to ALL 0 topics: set()
+[2026-02-04 12:38:15] [ERROR   ] [kafka_consumer] No Kafka topics found – exiting consumer.
+[2026-02-04 12:38:18] [INFO    ] [main] 
+[PHASE 2] Starting bulk reindex …
+[2026-02-04 12:38:18] [INFO    ] [reindex_engine] Discovered 0 indices to migrate: []
+[2026-02-04 12:38:18] [INFO    ] [main] [PHASE 2] Bulk reindex complete.
+[2026-02-04 12:38:18] [INFO    ] [main] 
+[PHASE 3] Kafka consumer already stopped / was not started.
+[2026-02-04 12:38:18] [INFO    ] [main] 
+[PHASE 4] Running validation …
+[2026-02-04 12:38:20] [INFO    ] [validator] New cluster health: green  (clusters=docker-cluster, nodes=1)
+[2026-02-04 12:38:20] [INFO    ] [validator] 
+======================================================================
+        ELASTICSEARCH MIGRATION VALIDATION REPORT
+        Generated: 2026-02-04 12:38:20
+======================================================================
+
+── CLUSTER HEALTH (new 8.x) ─────────────────────────────────────
+   Status        : GREEN
+   Cluster name  : docker-cluster
+   Nodes         : 1
+   Shards        : active=0 / unassigned=0
+
+── INDEX COUNT COMPARISON ────────────────────────────────────────
+   Index                                    Old      New   Diff  Status
+   -----------------------------------------------------------------
+   -----------------------------------------------------------------
+   TOTAL                                      0        0     +0  ✓ ALL MATCH
+
+── DOCUMENT SAMPLE CHECKS ────────────────────────────────────────
+   Total: 0/0 docs verified
+
+======================================================================
+  END OF REPORT
+======================================================================
+[2026-02-04 12:38:20] [INFO    ] [main] 
+── Migration finished in 5.1 seconds ──
+[2026-02-04 12:40:09] [INFO    ] [main] ============================================================
+[2026-02-04 12:40:09] [INFO    ] [main]   ES 6.4.2 → 8.11 Migration  |  2026-02-04 12:40:09
+[2026-02-04 12:40:09] [INFO    ] [main] ============================================================
+[2026-02-04 12:40:09] [INFO    ] [main] ── Preflight checks ──
+[2026-02-04 12:40:09] [INFO    ] [main] OLD  cluster reachable – version 6.4.2  (http://localhost:9201)
+[2026-02-04 12:40:09] [INFO    ] [main] NEW  cluster reachable – version 8.11.0  (http://localhost:9200)
+[2026-02-04 12:40:09] [INFO    ] [main] ── Preflight OK ──
+
+[2026-02-04 12:40:09] [INFO    ] [main] 
+[PHASE 1] Starting Kafka consumer in background …
+[2026-02-04 12:40:09] [INFO    ] [main] Kafka consumer thread started (tid=124797259433664)
+[2026-02-04 12:40:09] [INFO    ] [kafka_consumer] No prefix set – subscribing to ALL 0 topics: set()
+[2026-02-04 12:40:09] [ERROR   ] [kafka_consumer] No Kafka topics found – exiting consumer.
+[2026-02-04 12:40:12] [INFO    ] [main] 
+[PHASE 2] Starting bulk reindex …
+[2026-02-04 12:40:12] [INFO    ] [reindex_engine] Discovered 1 indices to migrate: ['products']
+[2026-02-04 12:40:12] [INFO    ] [reindex_engine] [products] Fetching mapping & settings …
+[2026-02-04 12:40:12] [INFO    ] [mapping_transformer] Transforming index 'products' …
+[2026-02-04 12:40:12] [DEBUG   ] [mapping_transformer] Unwrapped mapping type 'doc'
+[2026-02-04 12:40:12] [DEBUG   ] [mapping_transformer] Transformed mapping:
+{
+  "properties": {
+    "category": {
+      "type": "keyword"
+    },
+    "name": {
+      "type": "text"
+    },
+    "price": {
+      "type": "float"
+    }
+  }
+}
+[2026-02-04 12:40:12] [INFO    ] [reindex_engine] [products] Creating index on new cluster …
+[2026-02-04 12:40:12] [ERROR   ] [reindex_engine] [products] Migration FAILED:
+Traceback (most recent call last):
+  File "/home/jsb/Work/elasticsearchmigration/reindex_engine.py", line 111, in migrate_single_index
+    new.create_index(index_name, create_body)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jsb/Work/elasticsearchmigration/es_client.py", line 81, in create_index
+    resp.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/jsb/Work/elasticsearchmigration/venv/lib/python3.13/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: http://localhost:9200/products
+
+[2026-02-04 12:40:12] [INFO    ] [main] [PHASE 2] Bulk reindex complete.
+[2026-02-04 12:40:12] [INFO    ] [main] 
+[PHASE 3] Kafka consumer already stopped / was not started.
+[2026-02-04 12:40:12] [INFO    ] [main] 
+[PHASE 4] Running validation …
+[2026-02-04 12:40:14] [WARNING ] [validator] [products] old=6  new=0  ⚠ MISMATCH
+[2026-02-04 12:40:14] [INFO    ] [validator] New cluster health: green  (clusters=docker-cluster, nodes=1)
+[2026-02-04 12:40:14] [WARNING ] [validator] [products] Doc 4ix8J5wBQ8wWNbDWTWj1 – NOT FOUND in new cluster
+[2026-02-04 12:40:14] [WARNING ] [validator] [products] Doc 4yx8J5wBQ8wWNbDWcWgl – NOT FOUND in new cluster
+[2026-02-04 12:40:14] [WARNING ] [validator] [products] Doc 5Cx8J5wBQ8wWNbDWcWjX – NOT FOUND in new cluster
+[2026-02-04 12:40:14] [WARNING ] [validator] [products] Doc 5Sx8J5wBQ8wWNbDWcmg1 – NOT FOUND in new cluster
+[2026-02-04 12:40:14] [WARNING ] [validator] [products] Doc 5ix8J5wBQ8wWNbDWcmiU – NOT FOUND in new cluster
+[2026-02-04 12:40:14] [WARNING ] [validator] [products] Doc 5yx8J5wBQ8wWNbDWc2gM – NOT FOUND in new cluster
+[2026-02-04 12:40:14] [INFO    ] [validator] 
+======================================================================
+        ELASTICSEARCH MIGRATION VALIDATION REPORT
+        Generated: 2026-02-04 12:40:14
+======================================================================
+
+── CLUSTER HEALTH (new 8.x) ─────────────────────────────────────
+   Status        : GREEN
+   Cluster name  : docker-cluster
+   Nodes         : 1
+   Shards        : active=0 / unassigned=0
+
+── INDEX COUNT COMPARISON ────────────────────────────────────────
+   Index                                    Old      New   Diff  Status
+   -----------------------------------------------------------------
+   products                                   6        0     -6  ⚠ MISMATCH
+   -----------------------------------------------------------------
+   TOTAL                                      6        0     -6  ⚠ 1 MISMATCH(ES)
+
+── DOCUMENT SAMPLE CHECKS ────────────────────────────────────────
+   products: 0/6 docs match
+      ⚠ doc 4ix8J5wBQ8wWNbDWTWj1 – NOT FOUND in new cluster
+      ⚠ doc 4yx8J5wBQ8wWNbDWcWgl – NOT FOUND in new cluster
+      ⚠ doc 5Cx8J5wBQ8wWNbDWcWjX – NOT FOUND in new cluster
+      ⚠ doc 5Sx8J5wBQ8wWNbDWcmg1 – NOT FOUND in new cluster
+      ⚠ doc 5ix8J5wBQ8wWNbDWcmiU – NOT FOUND in new cluster
+      ⚠ doc 5yx8J5wBQ8wWNbDWc2gM – NOT FOUND in new cluster
+   Total: 0/6 docs verified
+
+── MIGRATION TIMING ──────────────────────────────────────────────
+   Index                                   Docs  Time (s)  Status
+   -----------------------------------------------------------------
+   products                                   0       0.3  ✗ FAILED
+      ✗ 400 Client Error: Bad Request for url: http://localhost:9200/products
+
+======================================================================
+  END OF REPORT
+======================================================================
+[2026-02-04 12:40:14] [INFO    ] [main] 
+── Migration finished in 5.5 seconds ──
+[2026-02-04 12:40:43] [INFO    ] [main] ============================================================
+[2026-02-04 12:40:43] [INFO    ] [main]   ES 6.4.2 → 8.11 Migration  |  2026-02-04 12:40:43
+[2026-02-04 12:40:43] [INFO    ] [main] ============================================================
+[2026-02-04 12:40:43] [INFO    ] [main] ── Preflight checks ──
+[2026-02-04 12:40:43] [INFO    ] [main] OLD  cluster reachable – version 6.4.2  (http://localhost:9201)
+[2026-02-04 12:40:43] [INFO    ] [main] NEW  cluster reachable – version 8.11.0  (http://localhost:9200)
+[2026-02-04 12:40:43] [INFO    ] [main] ── Preflight OK ──
+
+[2026-02-04 12:40:43] [INFO    ] [main] 
+[PHASE 1] Starting Kafka consumer in background …
+[2026-02-04 12:40:43] [INFO    ] [main] Kafka consumer thread started (tid=135207852517056)
+[2026-02-04 12:40:44] [INFO    ] [kafka_consumer] No prefix set – subscribing to ALL 0 topics: set()
+[2026-02-04 12:40:44] [ERROR   ] [kafka_consumer] No Kafka topics found – exiting consumer.
+[2026-02-04 12:40:46] [INFO    ] [main] 
+[PHASE 2] Starting bulk reindex …
+[2026-02-04 12:40:46] [INFO    ] [reindex_engine] Discovered 1 indices to migrate: ['products']
+[2026-02-04 12:40:46] [INFO    ] [reindex_engine] [products] Fetching mapping & settings …
+[2026-02-04 12:40:47] [INFO    ] [mapping_transformer] Transforming index 'products' …
+[2026-02-04 12:40:47] [DEBUG   ] [mapping_transformer] Unwrapped mapping type 'doc'
+[2026-02-04 12:40:47] [DEBUG   ] [mapping_transformer] Transformed mapping:
+{
+  "properties": {
+    "category": {
+      "type": "keyword"
+    },
+    "name": {
+      "type": "text"
+    },
+    "price": {
+      "type": "float"
+    }
+  }
+}
+[2026-02-04 12:40:47] [INFO    ] [reindex_engine] [products] Creating index on new cluster …
+[2026-02-04 12:40:47] [ERROR   ] [reindex_engine] [products] Migration FAILED:
+Traceback (most recent call last):
+  File "/home/jsb/Work/elasticsearchmigration/reindex_engine.py", line 111, in migrate_single_index
+    new.create_index(index_name, create_body)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jsb/Work/elasticsearchmigration/es_client.py", line 89, in create_index
+    resp.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/jsb/Work/elasticsearchmigration/venv/lib/python3.13/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: http://localhost:9200/products
+
+[2026-02-04 12:40:47] [INFO    ] [main] [PHASE 2] Bulk reindex complete.
+[2026-02-04 12:40:47] [INFO    ] [main] 
+[PHASE 3] Kafka consumer already stopped / was not started.
+[2026-02-04 12:40:47] [INFO    ] [main] 
+[PHASE 4] Running validation …
+[2026-02-04 12:40:49] [WARNING ] [validator] [products] old=6  new=0  ⚠ MISMATCH
+[2026-02-04 12:40:49] [INFO    ] [validator] New cluster health: green  (clusters=docker-cluster, nodes=1)
+[2026-02-04 12:40:49] [WARNING ] [validator] [products] Doc 4ix8J5wBQ8wWNbDWTWj1 – NOT FOUND in new cluster
+[2026-02-04 12:40:49] [WARNING ] [validator] [products] Doc 4yx8J5wBQ8wWNbDWcWgl – NOT FOUND in new cluster
+[2026-02-04 12:40:49] [WARNING ] [validator] [products] Doc 5Cx8J5wBQ8wWNbDWcWjX – NOT FOUND in new cluster
+[2026-02-04 12:40:49] [WARNING ] [validator] [products] Doc 5Sx8J5wBQ8wWNbDWcmg1 – NOT FOUND in new cluster
+[2026-02-04 12:40:49] [WARNING ] [validator] [products] Doc 5ix8J5wBQ8wWNbDWcmiU – NOT FOUND in new cluster
+[2026-02-04 12:40:49] [WARNING ] [validator] [products] Doc 5yx8J5wBQ8wWNbDWc2gM – NOT FOUND in new cluster
+[2026-02-04 12:40:49] [INFO    ] [validator] 
+======================================================================
+        ELASTICSEARCH MIGRATION VALIDATION REPORT
+        Generated: 2026-02-04 12:40:49
+======================================================================
+
+── CLUSTER HEALTH (new 8.x) ─────────────────────────────────────
+   Status        : GREEN
+   Cluster name  : docker-cluster
+   Nodes         : 1
+   Shards        : active=0 / unassigned=0
+
+── INDEX COUNT COMPARISON ────────────────────────────────────────
+   Index                                    Old      New   Diff  Status
+   -----------------------------------------------------------------
+   products                                   6        0     -6  ⚠ MISMATCH
+   -----------------------------------------------------------------
+   TOTAL                                      6        0     -6  ⚠ 1 MISMATCH(ES)
+
+── DOCUMENT SAMPLE CHECKS ────────────────────────────────────────
+   products: 0/6 docs match
+      ⚠ doc 4ix8J5wBQ8wWNbDWTWj1 – NOT FOUND in new cluster
+      ⚠ doc 4yx8J5wBQ8wWNbDWcWgl – NOT FOUND in new cluster
+      ⚠ doc 5Cx8J5wBQ8wWNbDWcWjX – NOT FOUND in new cluster
+      ⚠ doc 5Sx8J5wBQ8wWNbDWcmg1 – NOT FOUND in new cluster
+      ⚠ doc 5ix8J5wBQ8wWNbDWcmiU – NOT FOUND in new cluster
+      ⚠ doc 5yx8J5wBQ8wWNbDWc2gM – NOT FOUND in new cluster
+   Total: 0/6 docs verified
+
+── MIGRATION TIMING ──────────────────────────────────────────────
+   Index                                   Docs  Time (s)  Status
+   -----------------------------------------------------------------
+   products                                   0       0.0  ✗ FAILED
+      ✗ 400 Client Error: Bad Request for url: http://localhost:9200/products
+
+======================================================================
+  END OF REPORT
+======================================================================
+[2026-02-04 12:40:49] [INFO    ] [main] 
+── Migration finished in 5.1 seconds ──
+[2026-02-04 12:41:10] [INFO    ] [main] ============================================================
+[2026-02-04 12:41:10] [INFO    ] [main]   ES 6.4.2 → 8.11 Migration  |  2026-02-04 12:41:10
+[2026-02-04 12:41:10] [INFO    ] [main] ============================================================
+[2026-02-04 12:41:10] [INFO    ] [main] ── Preflight checks ──
+[2026-02-04 12:41:10] [INFO    ] [main] OLD  cluster reachable – version 6.4.2  (http://localhost:9201)
+[2026-02-04 12:41:10] [INFO    ] [main] NEW  cluster reachable – version 8.11.0  (http://localhost:9200)
+[2026-02-04 12:41:10] [INFO    ] [main] ── Preflight OK ──
+
+[2026-02-04 12:41:10] [INFO    ] [main] 
+[PHASE 1] Starting Kafka consumer in background …
+[2026-02-04 12:41:10] [INFO    ] [main] Kafka consumer thread started (tid=130612625229504)
+[2026-02-04 12:41:10] [INFO    ] [kafka_consumer] No prefix set – subscribing to ALL 0 topics: set()
+[2026-02-04 12:41:10] [ERROR   ] [kafka_consumer] No Kafka topics found – exiting consumer.
+[2026-02-04 12:41:13] [INFO    ] [main] 
+[PHASE 2] Starting bulk reindex …
+[2026-02-04 12:41:13] [INFO    ] [reindex_engine] Discovered 1 indices to migrate: ['products']
+[2026-02-04 12:41:13] [INFO    ] [reindex_engine] [products] Fetching mapping & settings …
+[2026-02-04 12:41:13] [INFO    ] [mapping_transformer] Transforming index 'products' …
+[2026-02-04 12:41:13] [DEBUG   ] [mapping_transformer] Unwrapped mapping type 'doc'
+[2026-02-04 12:41:13] [DEBUG   ] [mapping_transformer] Transformed mapping:
+{
+  "properties": {
+    "category": {
+      "type": "keyword"
+    },
+    "name": {
+      "type": "text"
+    },
+    "price": {
+      "type": "float"
+    }
+  }
+}
+[2026-02-04 12:41:13] [INFO    ] [reindex_engine] [products] Creating index on new cluster …
+[2026-02-04 12:41:13] [DEBUG   ] [reindex_engine] [products] Create body: {
+  "mappings": {
+    "properties": {
+      "category": {
+        "type": "keyword"
+      },
+      "name": {
+        "type": "text"
+      },
+      "price": {
+        "type": "float"
+      }
+    }
+  },
+  "settings": {
+    "index": {
+      "creation_date": "1770188971403",
+      "number_of_shards": "1",
+      "number_of_replicas": "0",
+      "uuid": "70LOPTvBTmqTpIXLhPR2Ug",
+      "version": {
+        "created": "6040299"
+      },
+      "provided_name": "products"
+    }
+  }
+}
+[2026-02-04 12:41:13] [ERROR   ] [reindex_engine] [products] Migration FAILED:
+Traceback (most recent call last):
+  File "/home/jsb/Work/elasticsearchmigration/reindex_engine.py", line 116, in migrate_single_index
+    new.create_index(index_name, create_body)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jsb/Work/elasticsearchmigration/es_client.py", line 89, in create_index
+    resp.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/jsb/Work/elasticsearchmigration/venv/lib/python3.13/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: http://localhost:9200/products
+
+[2026-02-04 12:41:13] [INFO    ] [main] [PHASE 2] Bulk reindex complete.
+[2026-02-04 12:41:13] [INFO    ] [main] 
+[PHASE 3] Kafka consumer already stopped / was not started.
+[2026-02-04 12:41:13] [INFO    ] [main] 
+[PHASE 4] Running validation …
+[2026-02-04 12:41:15] [WARNING ] [validator] [products] old=6  new=0  ⚠ MISMATCH
+[2026-02-04 12:41:15] [INFO    ] [validator] New cluster health: green  (clusters=docker-cluster, nodes=1)
+[2026-02-04 12:41:15] [WARNING ] [validator] [products] Doc 4ix8J5wBQ8wWNbDWTWj1 – NOT FOUND in new cluster
+[2026-02-04 12:41:15] [WARNING ] [validator] [products] Doc 4yx8J5wBQ8wWNbDWcWgl – NOT FOUND in new cluster
+[2026-02-04 12:41:15] [WARNING ] [validator] [products] Doc 5Cx8J5wBQ8wWNbDWcWjX – NOT FOUND in new cluster
+[2026-02-04 12:41:15] [WARNING ] [validator] [products] Doc 5Sx8J5wBQ8wWNbDWcmg1 – NOT FOUND in new cluster
+[2026-02-04 12:41:15] [WARNING ] [validator] [products] Doc 5ix8J5wBQ8wWNbDWcmiU – NOT FOUND in new cluster
+[2026-02-04 12:41:15] [WARNING ] [validator] [products] Doc 5yx8J5wBQ8wWNbDWc2gM – NOT FOUND in new cluster
+[2026-02-04 12:41:15] [INFO    ] [validator] 
+======================================================================
+        ELASTICSEARCH MIGRATION VALIDATION REPORT
+        Generated: 2026-02-04 12:41:15
+======================================================================
+
+── CLUSTER HEALTH (new 8.x) ─────────────────────────────────────
+   Status        : GREEN
+   Cluster name  : docker-cluster
+   Nodes         : 1
+   Shards        : active=0 / unassigned=0
+
+── INDEX COUNT COMPARISON ────────────────────────────────────────
+   Index                                    Old      New   Diff  Status
+   -----------------------------------------------------------------
+   products                                   6        0     -6  ⚠ MISMATCH
+   -----------------------------------------------------------------
+   TOTAL                                      6        0     -6  ⚠ 1 MISMATCH(ES)
+
+── DOCUMENT SAMPLE CHECKS ────────────────────────────────────────
+   products: 0/6 docs match
+      ⚠ doc 4ix8J5wBQ8wWNbDWTWj1 – NOT FOUND in new cluster
+      ⚠ doc 4yx8J5wBQ8wWNbDWcWgl – NOT FOUND in new cluster
+      ⚠ doc 5Cx8J5wBQ8wWNbDWcWjX – NOT FOUND in new cluster
+      ⚠ doc 5Sx8J5wBQ8wWNbDWcmg1 – NOT FOUND in new cluster
+      ⚠ doc 5ix8J5wBQ8wWNbDWcmiU – NOT FOUND in new cluster
+      ⚠ doc 5yx8J5wBQ8wWNbDWc2gM – NOT FOUND in new cluster
+   Total: 0/6 docs verified
+
+── MIGRATION TIMING ──────────────────────────────────────────────
+   Index                                   Docs  Time (s)  Status
+   -----------------------------------------------------------------
+   products                                   0       0.0  ✗ FAILED
+      ✗ 400 Client Error: Bad Request for url: http://localhost:9200/products
+
+======================================================================
+  END OF REPORT
+======================================================================
+[2026-02-04 12:41:15] [INFO    ] [main] 
+── Migration finished in 5.1 seconds ──
+[2026-02-04 12:41:27] [INFO    ] [main] ============================================================
+[2026-02-04 12:41:27] [INFO    ] [main]   ES 6.4.2 → 8.11 Migration  |  2026-02-04 12:41:27
+[2026-02-04 12:41:27] [INFO    ] [main] ============================================================
+[2026-02-04 12:41:27] [INFO    ] [main] ── Preflight checks ──
+[2026-02-04 12:41:27] [INFO    ] [main] OLD  cluster reachable – version 6.4.2  (http://localhost:9201)
+[2026-02-04 12:41:27] [INFO    ] [main] NEW  cluster reachable – version 8.11.0  (http://localhost:9200)
+[2026-02-04 12:41:27] [INFO    ] [main] ── Preflight OK ──
+
+[2026-02-04 12:41:27] [INFO    ] [main] 
+[PHASE 1] Starting Kafka consumer in background …
+[2026-02-04 12:41:27] [INFO    ] [main] Kafka consumer thread started (tid=130668356982464)
+[2026-02-04 12:41:28] [INFO    ] [kafka_consumer] No prefix set – subscribing to ALL 0 topics: set()
+[2026-02-04 12:41:28] [ERROR   ] [kafka_consumer] No Kafka topics found – exiting consumer.
+[2026-02-04 12:41:30] [INFO    ] [main] 
+[PHASE 2] Starting bulk reindex …
+[2026-02-04 12:41:30] [INFO    ] [reindex_engine] Discovered 1 indices to migrate: ['products']
+[2026-02-04 12:41:30] [INFO    ] [reindex_engine] [products] Fetching mapping & settings …
+[2026-02-04 12:41:31] [INFO    ] [mapping_transformer] Transforming index 'products' …
+[2026-02-04 12:41:31] [DEBUG   ] [mapping_transformer] Unwrapped mapping type 'doc'
+[2026-02-04 12:41:31] [DEBUG   ] [mapping_transformer] Transformed mapping:
+{
+  "properties": {
+    "category": {
+      "type": "keyword"
+    },
+    "name": {
+      "type": "text"
+    },
+    "price": {
+      "type": "float"
+    }
+  }
+}
+[2026-02-04 12:41:31] [INFO    ] [reindex_engine] [products] Creating index on new cluster …
+[2026-02-04 12:41:31] [DEBUG   ] [reindex_engine] [products] Create body: {
+  "mappings": {
+    "properties": {
+      "category": {
+        "type": "keyword"
+      },
+      "name": {
+        "type": "text"
+      },
+      "price": {
+        "type": "float"
+      }
+    }
+  },
+  "settings": {
+    "index": {
+      "creation_date": "1770188971403",
+      "number_of_shards": "1",
+      "number_of_replicas": "0",
+      "uuid": "70LOPTvBTmqTpIXLhPR2Ug",
+      "version": {
+        "created": "6040299"
+      },
+      "provided_name": "products"
+    }
+  }
+}
+[2026-02-04 12:41:31] [ERROR   ] [reindex_engine] [products] Migration FAILED:
+Traceback (most recent call last):
+  File "/home/jsb/Work/elasticsearchmigration/reindex_engine.py", line 116, in migrate_single_index
+    new.create_index(index_name, create_body)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jsb/Work/elasticsearchmigration/es_client.py", line 89, in create_index
+    resp.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/jsb/Work/elasticsearchmigration/venv/lib/python3.13/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: http://localhost:9200/products
+
+[2026-02-04 12:41:31] [INFO    ] [main] [PHASE 2] Bulk reindex complete.
+[2026-02-04 12:41:31] [INFO    ] [main] 
+[PHASE 3] Kafka consumer already stopped / was not started.
+[2026-02-04 12:41:31] [INFO    ] [main] 
+[PHASE 4] Running validation …
+[2026-02-04 12:41:33] [WARNING ] [validator] [products] old=6  new=0  ⚠ MISMATCH
+[2026-02-04 12:41:33] [INFO    ] [validator] New cluster health: green  (clusters=docker-cluster, nodes=1)
+[2026-02-04 12:41:33] [WARNING ] [validator] [products] Doc 4ix8J5wBQ8wWNbDWTWj1 – NOT FOUND in new cluster
+[2026-02-04 12:41:33] [WARNING ] [validator] [products] Doc 4yx8J5wBQ8wWNbDWcWgl – NOT FOUND in new cluster
+[2026-02-04 12:41:33] [WARNING ] [validator] [products] Doc 5Cx8J5wBQ8wWNbDWcWjX – NOT FOUND in new cluster
+[2026-02-04 12:41:33] [WARNING ] [validator] [products] Doc 5Sx8J5wBQ8wWNbDWcmg1 – NOT FOUND in new cluster
+[2026-02-04 12:41:33] [WARNING ] [validator] [products] Doc 5ix8J5wBQ8wWNbDWcmiU – NOT FOUND in new cluster
+[2026-02-04 12:41:33] [WARNING ] [validator] [products] Doc 5yx8J5wBQ8wWNbDWc2gM – NOT FOUND in new cluster
+[2026-02-04 12:41:33] [INFO    ] [validator] 
+======================================================================
+        ELASTICSEARCH MIGRATION VALIDATION REPORT
+        Generated: 2026-02-04 12:41:33
+======================================================================
+
+── CLUSTER HEALTH (new 8.x) ─────────────────────────────────────
+   Status        : GREEN
+   Cluster name  : docker-cluster
+   Nodes         : 1
+   Shards        : active=0 / unassigned=0
+
+── INDEX COUNT COMPARISON ────────────────────────────────────────
+   Index                                    Old      New   Diff  Status
+   -----------------------------------------------------------------
+   products                                   6        0     -6  ⚠ MISMATCH
+   -----------------------------------------------------------------
+   TOTAL                                      6        0     -6  ⚠ 1 MISMATCH(ES)
+
+── DOCUMENT SAMPLE CHECKS ────────────────────────────────────────
+   products: 0/6 docs match
+      ⚠ doc 4ix8J5wBQ8wWNbDWTWj1 – NOT FOUND in new cluster
+      ⚠ doc 4yx8J5wBQ8wWNbDWcWgl – NOT FOUND in new cluster
+      ⚠ doc 5Cx8J5wBQ8wWNbDWcWjX – NOT FOUND in new cluster
+      ⚠ doc 5Sx8J5wBQ8wWNbDWcmg1 – NOT FOUND in new cluster
+      ⚠ doc 5ix8J5wBQ8wWNbDWcmiU – NOT FOUND in new cluster
+      ⚠ doc 5yx8J5wBQ8wWNbDWc2gM – NOT FOUND in new cluster
+   Total: 0/6 docs verified
+
+── MIGRATION TIMING ──────────────────────────────────────────────
+   Index                                   Docs  Time (s)  Status
+   -----------------------------------------------------------------
+   products                                   0       0.0  ✗ FAILED
+      ✗ 400 Client Error: Bad Request for url: http://localhost:9200/products
+
+======================================================================
+  END OF REPORT
+======================================================================
+[2026-02-04 12:41:33] [INFO    ] [main] 
+── Migration finished in 5.2 seconds ──
+[2026-02-04 12:42:15] [INFO    ] [main] ============================================================
+[2026-02-04 12:42:15] [INFO    ] [main]   ES 6.4.2 → 8.11 Migration  |  2026-02-04 12:42:15
+[2026-02-04 12:42:15] [INFO    ] [main] ============================================================
+[2026-02-04 12:42:15] [INFO    ] [main] ── Preflight checks ──
+[2026-02-04 12:42:15] [INFO    ] [main] OLD  cluster reachable – version 6.4.2  (http://localhost:9201)
+[2026-02-04 12:42:15] [INFO    ] [main] NEW  cluster reachable – version 8.11.0  (http://localhost:9200)
+[2026-02-04 12:42:15] [INFO    ] [main] ── Preflight OK ──
+
+[2026-02-04 12:42:15] [INFO    ] [main] 
+[PHASE 1] Starting Kafka consumer in background …
+[2026-02-04 12:42:15] [INFO    ] [main] Kafka consumer thread started (tid=137953008502464)
+[2026-02-04 12:42:15] [INFO    ] [kafka_consumer] No prefix set – subscribing to ALL 0 topics: set()
+[2026-02-04 12:42:15] [ERROR   ] [kafka_consumer] No Kafka topics found – exiting consumer.
+[2026-02-04 12:42:18] [INFO    ] [main] 
+[PHASE 2] Starting bulk reindex …
+[2026-02-04 12:42:18] [INFO    ] [reindex_engine] Discovered 1 indices to migrate: ['products']
+[2026-02-04 12:42:18] [INFO    ] [reindex_engine] [products] Fetching mapping & settings …
+[2026-02-04 12:42:18] [INFO    ] [mapping_transformer] Transforming index 'products' …
+[2026-02-04 12:42:18] [DEBUG   ] [mapping_transformer] Unwrapped mapping type 'doc'
+[2026-02-04 12:42:18] [DEBUG   ] [mapping_transformer] Transformed mapping:
+{
+  "properties": {
+    "category": {
+      "type": "keyword"
+    },
+    "name": {
+      "type": "text"
+    },
+    "price": {
+      "type": "float"
+    }
+  }
+}
+[2026-02-04 12:42:18] [INFO    ] [reindex_engine] [products] Creating index on new cluster …
+[2026-02-04 12:42:18] [DEBUG   ] [reindex_engine] [products] Create body: {
+  "mappings": {
+    "properties": {
+      "category": {
+        "type": "keyword"
+      },
+      "name": {
+        "type": "text"
+      },
+      "price": {
+        "type": "float"
+      }
+    }
+  },
+  "settings": {
+    "index": {
+      "creation_date": "1770188971403",
+      "number_of_shards": "1",
+      "number_of_replicas": "0",
+      "uuid": "70LOPTvBTmqTpIXLhPR2Ug",
+      "version": {
+        "created": "6040299"
+      },
+      "provided_name": "products"
+    }
+  }
+}
+[2026-02-04 12:42:18] [ERROR   ] [reindex_engine] [products] Migration FAILED:
+Traceback (most recent call last):
+  File "/home/jsb/Work/elasticsearchmigration/es_client.py", line 86, in create_index
+    from logger import logger
+ImportError: cannot import name 'logger' from 'logger' (/home/jsb/Work/elasticsearchmigration/logger.py)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jsb/Work/elasticsearchmigration/reindex_engine.py", line 116, in migrate_single_index
+    new.create_index(index_name, create_body)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jsb/Work/elasticsearchmigration/es_client.py", line 91, in create_index
+    from logger import logger
+ImportError: cannot import name 'logger' from 'logger' (/home/jsb/Work/elasticsearchmigration/logger.py)
+
+[2026-02-04 12:42:18] [INFO    ] [main] [PHASE 2] Bulk reindex complete.
+[2026-02-04 12:42:18] [INFO    ] [main] 
+[PHASE 3] Kafka consumer already stopped / was not started.
+[2026-02-04 12:42:18] [INFO    ] [main] 
+[PHASE 4] Running validation …
+[2026-02-04 12:42:20] [WARNING ] [validator] [products] old=6  new=0  ⚠ MISMATCH
+[2026-02-04 12:42:20] [INFO    ] [validator] New cluster health: green  (clusters=docker-cluster, nodes=1)
+[2026-02-04 12:42:20] [WARNING ] [validator] [products] Doc 4ix8J5wBQ8wWNbDWTWj1 – NOT FOUND in new cluster
+[2026-02-04 12:42:20] [WARNING ] [validator] [products] Doc 4yx8J5wBQ8wWNbDWcWgl – NOT FOUND in new cluster
+[2026-02-04 12:42:20] [WARNING ] [validator] [products] Doc 5Cx8J5wBQ8wWNbDWcWjX – NOT FOUND in new cluster
+[2026-02-04 12:42:20] [WARNING ] [validator] [products] Doc 5Sx8J5wBQ8wWNbDWcmg1 – NOT FOUND in new cluster
+[2026-02-04 12:42:20] [WARNING ] [validator] [products] Doc 5ix8J5wBQ8wWNbDWcmiU – NOT FOUND in new cluster
+[2026-02-04 12:42:20] [WARNING ] [validator] [products] Doc 5yx8J5wBQ8wWNbDWc2gM – NOT FOUND in new cluster
+[2026-02-04 12:42:20] [INFO    ] [validator] 
+======================================================================
+        ELASTICSEARCH MIGRATION VALIDATION REPORT
+        Generated: 2026-02-04 12:42:20
+======================================================================
+
+── CLUSTER HEALTH (new 8.x) ─────────────────────────────────────
+   Status        : GREEN
+   Cluster name  : docker-cluster
+   Nodes         : 1
+   Shards        : active=0 / unassigned=0
+
+── INDEX COUNT COMPARISON ────────────────────────────────────────
+   Index                                    Old      New   Diff  Status
+   -----------------------------------------------------------------
+   products                                   6        0     -6  ⚠ MISMATCH
+   -----------------------------------------------------------------
+   TOTAL                                      6        0     -6  ⚠ 1 MISMATCH(ES)
+
+── DOCUMENT SAMPLE CHECKS ────────────────────────────────────────
+   products: 0/6 docs match
+      ⚠ doc 4ix8J5wBQ8wWNbDWTWj1 – NOT FOUND in new cluster
+      ⚠ doc 4yx8J5wBQ8wWNbDWcWgl – NOT FOUND in new cluster
+      ⚠ doc 5Cx8J5wBQ8wWNbDWcWjX – NOT FOUND in new cluster
+      ⚠ doc 5Sx8J5wBQ8wWNbDWcmg1 – NOT FOUND in new cluster
+      ⚠ doc 5ix8J5wBQ8wWNbDWcmiU – NOT FOUND in new cluster
+      ⚠ doc 5yx8J5wBQ8wWNbDWc2gM – NOT FOUND in new cluster
+   Total: 0/6 docs verified
+
+── MIGRATION TIMING ──────────────────────────────────────────────
+   Index                                   Docs  Time (s)  Status
+   -----------------------------------------------------------------
+   products                                   0       0.0  ✗ FAILED
+      ✗ cannot import name 'logger' from 'logger' (/home/jsb/Work/elasticsearchmigration/logger.py)
+
+======================================================================
+  END OF REPORT
+======================================================================
+[2026-02-04 12:42:20] [INFO    ] [main] 
+── Migration finished in 5.1 seconds ──
+[2026-02-04 12:42:29] [INFO    ] [main] ============================================================
+[2026-02-04 12:42:29] [INFO    ] [main]   ES 6.4.2 → 8.11 Migration  |  2026-02-04 12:42:29
+[2026-02-04 12:42:29] [INFO    ] [main] ============================================================
+[2026-02-04 12:42:29] [INFO    ] [main] ── Preflight checks ──
+[2026-02-04 12:42:29] [INFO    ] [main] OLD  cluster reachable – version 6.4.2  (http://localhost:9201)
+[2026-02-04 12:42:29] [INFO    ] [main] NEW  cluster reachable – version 8.11.0  (http://localhost:9200)
+[2026-02-04 12:42:29] [INFO    ] [main] ── Preflight OK ──
+
+[2026-02-04 12:42:29] [INFO    ] [main] 
+[PHASE 1] Starting Kafka consumer in background …
+[2026-02-04 12:42:29] [INFO    ] [main] Kafka consumer thread started (tid=134428624758464)
+[2026-02-04 12:42:29] [INFO    ] [kafka_consumer] No prefix set – subscribing to ALL 0 topics: set()
+[2026-02-04 12:42:29] [ERROR   ] [kafka_consumer] No Kafka topics found – exiting consumer.
+[2026-02-04 12:42:32] [INFO    ] [main] 
+[PHASE 2] Starting bulk reindex …
+[2026-02-04 12:42:32] [INFO    ] [reindex_engine] Discovered 1 indices to migrate: ['products']
+[2026-02-04 12:42:32] [INFO    ] [reindex_engine] [products] Fetching mapping & settings …
+[2026-02-04 12:42:32] [INFO    ] [mapping_transformer] Transforming index 'products' …
+[2026-02-04 12:42:32] [DEBUG   ] [mapping_transformer] Unwrapped mapping type 'doc'
+[2026-02-04 12:42:32] [DEBUG   ] [mapping_transformer] Transformed mapping:
+{
+  "properties": {
+    "category": {
+      "type": "keyword"
+    },
+    "name": {
+      "type": "text"
+    },
+    "price": {
+      "type": "float"
+    }
+  }
+}
+[2026-02-04 12:42:32] [INFO    ] [reindex_engine] [products] Creating index on new cluster …
+[2026-02-04 12:42:32] [DEBUG   ] [reindex_engine] [products] Create body: {
+  "mappings": {
+    "properties": {
+      "category": {
+        "type": "keyword"
+      },
+      "name": {
+        "type": "text"
+      },
+      "price": {
+        "type": "float"
+      }
+    }
+  },
+  "settings": {
+    "index": {
+      "creation_date": "1770188971403",
+      "number_of_shards": "1",
+      "number_of_replicas": "0",
+      "uuid": "70LOPTvBTmqTpIXLhPR2Ug",
+      "version": {
+        "created": "6040299"
+      },
+      "provided_name": "products"
+    }
+  }
+}
+[2026-02-04 12:42:32] [ERROR   ] [reindex_engine] [products] Migration FAILED:
+Traceback (most recent call last):
+  File "/home/jsb/Work/elasticsearchmigration/es_client.py", line 86, in create_index
+    from logger import logger
+ImportError: cannot import name 'logger' from 'logger' (/home/jsb/Work/elasticsearchmigration/logger.py)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/jsb/Work/elasticsearchmigration/reindex_engine.py", line 116, in migrate_single_index
+    new.create_index(index_name, create_body)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jsb/Work/elasticsearchmigration/es_client.py", line 91, in create_index
+    from logger import logger
+ImportError: cannot import name 'logger' from 'logger' (/home/jsb/Work/elasticsearchmigration/logger.py)
+
+[2026-02-04 12:42:32] [INFO    ] [main] [PHASE 2] Bulk reindex complete.
+[2026-02-04 12:42:32] [INFO    ] [main] 
+[PHASE 3] Kafka consumer already stopped / was not started.
+[2026-02-04 12:42:32] [INFO    ] [main] 
+[PHASE 4] Running validation …
+[2026-02-04 12:42:34] [WARNING ] [validator] [products] old=6  new=0  ⚠ MISMATCH
+[2026-02-04 12:42:34] [INFO    ] [validator] New cluster health: green  (clusters=docker-cluster, nodes=1)
+[2026-02-04 12:42:34] [WARNING ] [validator] [products] Doc 4ix8J5wBQ8wWNbDWTWj1 – NOT FOUND in new cluster
+[2026-02-04 12:42:34] [WARNING ] [validator] [products] Doc 4yx8J5wBQ8wWNbDWcWgl – NOT FOUND in new cluster
+[2026-02-04 12:42:34] [WARNING ] [validator] [products] Doc 5Cx8J5wBQ8wWNbDWcWjX – NOT FOUND in new cluster
+[2026-02-04 12:42:34] [WARNING ] [validator] [products] Doc 5Sx8J5wBQ8wWNbDWcmg1 – NOT FOUND in new cluster
+[2026-02-04 12:42:34] [WARNING ] [validator] [products] Doc 5ix8J5wBQ8wWNbDWcmiU – NOT FOUND in new cluster
+[2026-02-04 12:42:34] [WARNING ] [validator] [products] Doc 5yx8J5wBQ8wWNbDWc2gM – NOT FOUND in new cluster
+[2026-02-04 12:42:34] [INFO    ] [validator] 
+======================================================================
+        ELASTICSEARCH MIGRATION VALIDATION REPORT
+        Generated: 2026-02-04 12:42:34
+======================================================================
+
+── CLUSTER HEALTH (new 8.x) ─────────────────────────────────────
+   Status        : GREEN
+   Cluster name  : docker-cluster
+   Nodes         : 1
+   Shards        : active=0 / unassigned=0
+
+── INDEX COUNT COMPARISON ────────────────────────────────────────
+   Index                                    Old      New   Diff  Status
+   -----------------------------------------------------------------
+   products                                   6        0     -6  ⚠ MISMATCH
+   -----------------------------------------------------------------
+   TOTAL                                      6        0     -6  ⚠ 1 MISMATCH(ES)
+
+── DOCUMENT SAMPLE CHECKS ────────────────────────────────────────
+   products: 0/6 docs match
+      ⚠ doc 4ix8J5wBQ8wWNbDWTWj1 – NOT FOUND in new cluster
+      ⚠ doc 4yx8J5wBQ8wWNbDWcWgl – NOT FOUND in new cluster
+      ⚠ doc 5Cx8J5wBQ8wWNbDWcWjX – NOT FOUND in new cluster
+      ⚠ doc 5Sx8J5wBQ8wWNbDWcmg1 – NOT FOUND in new cluster
+      ⚠ doc 5ix8J5wBQ8wWNbDWcmiU – NOT FOUND in new cluster
+      ⚠ doc 5yx8J5wBQ8wWNbDWc2gM – NOT FOUND in new cluster
+   Total: 0/6 docs verified
+
+── MIGRATION TIMING ──────────────────────────────────────────────
+   Index                                   Docs  Time (s)  Status
+   -----------------------------------------------------------------
+   products                                   0       0.0  ✗ FAILED
+      ✗ cannot import name 'logger' from 'logger' (/home/jsb/Work/elasticsearchmigration/logger.py)
+
+======================================================================
+  END OF REPORT
+======================================================================
+[2026-02-04 12:42:34] [INFO    ] [main] 
+── Migration finished in 5.1 seconds ──
+[2026-02-04 12:42:55] [INFO    ] [main] ============================================================
+[2026-02-04 12:42:55] [INFO    ] [main]   ES 6.4.2 → 8.11 Migration  |  2026-02-04 12:42:55
+[2026-02-04 12:42:55] [INFO    ] [main] ============================================================
+[2026-02-04 12:42:55] [INFO    ] [main] ── Preflight checks ──
+[2026-02-04 12:42:55] [INFO    ] [main] OLD  cluster reachable – version 6.4.2  (http://localhost:9201)
+[2026-02-04 12:42:55] [INFO    ] [main] NEW  cluster reachable – version 8.11.0  (http://localhost:9200)
+[2026-02-04 12:42:55] [INFO    ] [main] ── Preflight OK ──
+
+[2026-02-04 12:42:55] [INFO    ] [main] 
+[PHASE 1] Starting Kafka consumer in background …
+[2026-02-04 12:42:55] [INFO    ] [main] Kafka consumer thread started (tid=135553725310656)
+[2026-02-04 12:42:55] [INFO    ] [kafka_consumer] No prefix set – subscribing to ALL 0 topics: set()
+[2026-02-04 12:42:55] [ERROR   ] [kafka_consumer] No Kafka topics found – exiting consumer.
+[2026-02-04 12:42:58] [INFO    ] [main] 
+[PHASE 2] Starting bulk reindex …
+[2026-02-04 12:42:58] [INFO    ] [reindex_engine] Discovered 1 indices to migrate: ['products']
+[2026-02-04 12:42:58] [INFO    ] [reindex_engine] [products] Fetching mapping & settings …
+[2026-02-04 12:42:58] [INFO    ] [mapping_transformer] Transforming index 'products' …
+[2026-02-04 12:42:58] [DEBUG   ] [mapping_transformer] Unwrapped mapping type 'doc'
+[2026-02-04 12:42:58] [DEBUG   ] [mapping_transformer] Transformed mapping:
+{
+  "properties": {
+    "category": {
+      "type": "keyword"
+    },
+    "name": {
+      "type": "text"
+    },
+    "price": {
+      "type": "float"
+    }
+  }
+}
+[2026-02-04 12:42:58] [INFO    ] [reindex_engine] [products] Creating index on new cluster …
+[2026-02-04 12:42:58] [DEBUG   ] [reindex_engine] [products] Create body: {
+  "mappings": {
+    "properties": {
+      "category": {
+        "type": "keyword"
+      },
+      "name": {
+        "type": "text"
+      },
+      "price": {
+        "type": "float"
+      }
+    }
+  },
+  "settings": {
+    "index": {
+      "creation_date": "1770188971403",
+      "number_of_shards": "1",
+      "number_of_replicas": "0",
+      "uuid": "70LOPTvBTmqTpIXLhPR2Ug",
+      "version": {
+        "created": "6040299"
+      },
+      "provided_name": "products"
+    }
+  }
+}
+[2026-02-04 12:42:58] [ERROR   ] [es_client] Failed to create index products. Status: 400. Error: {
+  "error": {
+    "root_cause": [
+      {
+        "type": "illegal_argument_exception",
+        "reason": "unknown setting [index.uuid] please check that any required plugins are installed, or check the breaking changes documentation for removed settings"
+      }
+    ],
+    "type": "illegal_argument_exception",
+    "reason": "unknown setting [index.uuid] please check that any required plugins are installed, or check the breaking changes documentation for removed settings",
+    "suppressed": [
+      {
+        "type": "illegal_argument_exception",
+        "reason": "unknown setting [index.provided_name] please check that any required plugins are installed, or check the breaking changes documentation for removed settings"
+      },
+      {
+        "type": "illegal_argument_exception",
+        "reason": "unknown setting [index.creation_date] please check that any required plugins are installed, or check the breaking changes documentation for removed settings"
+      }
+    ]
+  },
+  "status": 400
+}
+[2026-02-04 12:42:58] [ERROR   ] [es_client] Request body was: {
+  "mappings": {
+    "properties": {
+      "category": {
+        "type": "keyword"
+      },
+      "name": {
+        "type": "text"
+      },
+      "price": {
+        "type": "float"
+      }
+    }
+  },
+  "settings": {
+    "index": {
+      "creation_date": "1770188971403",
+      "number_of_shards": "1",
+      "number_of_replicas": "0",
+      "uuid": "70LOPTvBTmqTpIXLhPR2Ug",
+      "version": {
+        "created": "6040299"
+      },
+      "provided_name": "products"
+    }
+  }
+}
+[2026-02-04 12:42:58] [ERROR   ] [reindex_engine] [products] Migration FAILED:
+Traceback (most recent call last):
+  File "/home/jsb/Work/elasticsearchmigration/reindex_engine.py", line 116, in migrate_single_index
+    new.create_index(index_name, create_body)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jsb/Work/elasticsearchmigration/es_client.py", line 96, in create_index
+    resp.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/jsb/Work/elasticsearchmigration/venv/lib/python3.13/site-packages/requests/models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: http://localhost:9200/products
+
+[2026-02-04 12:42:58] [INFO    ] [main] [PHASE 2] Bulk reindex complete.
+[2026-02-04 12:42:58] [INFO    ] [main] 
+[PHASE 3] Kafka consumer already stopped / was not started.
+[2026-02-04 12:42:58] [INFO    ] [main] 
+[PHASE 4] Running validation …
+[2026-02-04 12:43:00] [WARNING ] [validator] [products] old=6  new=0  ⚠ MISMATCH
+[2026-02-04 12:43:00] [INFO    ] [validator] New cluster health: green  (clusters=docker-cluster, nodes=1)
+[2026-02-04 12:43:00] [WARNING ] [validator] [products] Doc 4ix8J5wBQ8wWNbDWTWj1 – NOT FOUND in new cluster
+[2026-02-04 12:43:00] [WARNING ] [validator] [products] Doc 4yx8J5wBQ8wWNbDWcWgl – NOT FOUND in new cluster
+[2026-02-04 12:43:00] [WARNING ] [validator] [products] Doc 5Cx8J5wBQ8wWNbDWcWjX – NOT FOUND in new cluster
+[2026-02-04 12:43:00] [WARNING ] [validator] [products] Doc 5Sx8J5wBQ8wWNbDWcmg1 – NOT FOUND in new cluster
+[2026-02-04 12:43:00] [WARNING ] [validator] [products] Doc 5ix8J5wBQ8wWNbDWcmiU – NOT FOUND in new cluster
+[2026-02-04 12:43:00] [WARNING ] [validator] [products] Doc 5yx8J5wBQ8wWNbDWc2gM – NOT FOUND in new cluster
+[2026-02-04 12:43:00] [INFO    ] [validator] 
+======================================================================
+        ELASTICSEARCH MIGRATION VALIDATION REPORT
+        Generated: 2026-02-04 12:43:00
+======================================================================
+
+── CLUSTER HEALTH (new 8.x) ─────────────────────────────────────
+   Status        : GREEN
+   Cluster name  : docker-cluster
+   Nodes         : 1
+   Shards        : active=0 / unassigned=0
+
+── INDEX COUNT COMPARISON ────────────────────────────────────────
+   Index                                    Old      New   Diff  Status
+   -----------------------------------------------------------------
+   products                                   6        0     -6  ⚠ MISMATCH
+   -----------------------------------------------------------------
+   TOTAL                                      6        0     -6  ⚠ 1 MISMATCH(ES)
+
+── DOCUMENT SAMPLE CHECKS ────────────────────────────────────────
+   products: 0/6 docs match
+      ⚠ doc 4ix8J5wBQ8wWNbDWTWj1 – NOT FOUND in new cluster
+      ⚠ doc 4yx8J5wBQ8wWNbDWcWgl – NOT FOUND in new cluster
+      ⚠ doc 5Cx8J5wBQ8wWNbDWcWjX – NOT FOUND in new cluster
+      ⚠ doc 5Sx8J5wBQ8wWNbDWcmg1 – NOT FOUND in new cluster
+      ⚠ doc 5ix8J5wBQ8wWNbDWcmiU – NOT FOUND in new cluster
+      ⚠ doc 5yx8J5wBQ8wWNbDWc2gM – NOT FOUND in new cluster
+   Total: 0/6 docs verified
+
+── MIGRATION TIMING ──────────────────────────────────────────────
+   Index                                   Docs  Time (s)  Status
+   -----------------------------------------------------------------
+   products                                   0       0.0  ✗ FAILED
+      ✗ 400 Client Error: Bad Request for url: http://localhost:9200/products
+
+======================================================================
+  END OF REPORT
+======================================================================
+[2026-02-04 12:43:00] [INFO    ] [main] 
+── Migration finished in 5.1 seconds ──
+[2026-02-04 12:43:33] [INFO    ] [main] ============================================================
+[2026-02-04 12:43:33] [INFO    ] [main]   ES 6.4.2 → 8.11 Migration  |  2026-02-04 12:43:33
+[2026-02-04 12:43:33] [INFO    ] [main] ============================================================
+[2026-02-04 12:43:33] [INFO    ] [main] ── Preflight checks ──
+[2026-02-04 12:43:33] [INFO    ] [main] OLD  cluster reachable – version 6.4.2  (http://localhost:9201)
+[2026-02-04 12:43:33] [INFO    ] [main] NEW  cluster reachable – version 8.11.0  (http://localhost:9200)
+[2026-02-04 12:43:33] [INFO    ] [main] ── Preflight OK ──
+
+[2026-02-04 12:43:33] [INFO    ] [main] 
+[PHASE 1] Starting Kafka consumer in background …
+[2026-02-04 12:43:33] [INFO    ] [main] Kafka consumer thread started (tid=132224741213888)
+[2026-02-04 12:43:33] [INFO    ] [kafka_consumer] No prefix set – subscribing to ALL 0 topics: set()
+[2026-02-04 12:43:33] [ERROR   ] [kafka_consumer] No Kafka topics found – exiting consumer.
+[2026-02-04 12:43:36] [INFO    ] [main] 
+[PHASE 2] Starting bulk reindex …
+[2026-02-04 12:43:36] [INFO    ] [reindex_engine] Discovered 1 indices to migrate: ['products']
+[2026-02-04 12:43:36] [INFO    ] [reindex_engine] [products] Fetching mapping & settings …
+[2026-02-04 12:43:36] [INFO    ] [mapping_transformer] Transforming index 'products' …
+[2026-02-04 12:43:36] [DEBUG   ] [mapping_transformer] Unwrapped mapping type 'doc'
+[2026-02-04 12:43:36] [DEBUG   ] [mapping_transformer] Removed auto-managed setting 'creation_date'
+[2026-02-04 12:43:36] [DEBUG   ] [mapping_transformer] Removed auto-managed setting 'uuid'
+[2026-02-04 12:43:36] [DEBUG   ] [mapping_transformer] Removed auto-managed setting 'version'
+[2026-02-04 12:43:36] [DEBUG   ] [mapping_transformer] Removed auto-managed setting 'provided_name'
+[2026-02-04 12:43:36] [DEBUG   ] [mapping_transformer] Transformed mapping:
+{
+  "properties": {
+    "category": {
+      "type": "keyword"
+    },
+    "name": {
+      "type": "text"
+    },
+    "price": {
+      "type": "float"
+    }
+  }
+}
+[2026-02-04 12:43:36] [INFO    ] [reindex_engine] [products] Creating index on new cluster …
+[2026-02-04 12:43:36] [DEBUG   ] [reindex_engine] [products] Create body: {
+  "mappings": {
+    "properties": {
+      "category": {
+        "type": "keyword"
+      },
+      "name": {
+        "type": "text"
+      },
+      "price": {
+        "type": "float"
+      }
+    }
+  },
+  "settings": {
+    "index": {
+      "number_of_shards": "1",
+      "number_of_replicas": "0"
+    }
+  }
+}
+[2026-02-04 12:43:40] [INFO    ] [reindex_engine] [products] Starting scroll + bulk reindex …
+[2026-02-04 12:43:40] [INFO    ] [reindex_engine] [products] Page 1 done – 6 docs migrated so far …
+[2026-02-04 12:43:40] [INFO    ] [reindex_engine] [products] Validating counts …
+[2026-02-04 12:43:43] [INFO    ] [reindex_engine] [products] ✓ Migration complete. 6 docs verified.
+[2026-02-04 12:43:43] [INFO    ] [main] [PHASE 2] Bulk reindex complete.
+[2026-02-04 12:43:43] [INFO    ] [main] 
+[PHASE 3] Kafka consumer already stopped / was not started.
+[2026-02-04 12:43:43] [INFO    ] [main] 
+[PHASE 4] Running validation …
+[2026-02-04 12:43:45] [INFO    ] [validator] [products] old=6  new=6  ✓ MATCH
+[2026-02-04 12:43:45] [INFO    ] [validator] New cluster health: green  (clusters=docker-cluster, nodes=1)
+[2026-02-04 12:43:45] [DEBUG   ] [validator] [products] Doc 4ix8J5wBQ8wWNbDWTWj1 – OK
+[2026-02-04 12:43:45] [DEBUG   ] [validator] [products] Doc 4yx8J5wBQ8wWNbDWcWgl – OK
+[2026-02-04 12:43:45] [DEBUG   ] [validator] [products] Doc 5Cx8J5wBQ8wWNbDWcWjX – OK
+[2026-02-04 12:43:45] [DEBUG   ] [validator] [products] Doc 5Sx8J5wBQ8wWNbDWcmg1 – OK
+[2026-02-04 12:43:45] [DEBUG   ] [validator] [products] Doc 5ix8J5wBQ8wWNbDWcmiU – OK
+[2026-02-04 12:43:45] [DEBUG   ] [validator] [products] Doc 5yx8J5wBQ8wWNbDWc2gM – OK
+[2026-02-04 12:43:45] [INFO    ] [validator] 
+======================================================================
+        ELASTICSEARCH MIGRATION VALIDATION REPORT
+        Generated: 2026-02-04 12:43:45
+======================================================================
+
+── CLUSTER HEALTH (new 8.x) ─────────────────────────────────────
+   Status        : GREEN
+   Cluster name  : docker-cluster
+   Nodes         : 1
+   Shards        : active=1 / unassigned=0
+
+── INDEX COUNT COMPARISON ────────────────────────────────────────
+   Index                                    Old      New   Diff  Status
+   -----------------------------------------------------------------
+   products                                   6        6     +0  ✓ MATCH
+   -----------------------------------------------------------------
+   TOTAL                                      6        6     +0  ✓ ALL MATCH
+
+── DOCUMENT SAMPLE CHECKS ────────────────────────────────────────
+   products: 6/6 docs match
+   Total: 6/6 docs verified
+
+── MIGRATION TIMING ──────────────────────────────────────────────
+   Index                                   Docs  Time (s)  Status
+   -----------------------------------------------------------------
+   products                                   6       6.1  ✓ OK
+
+======================================================================
+  END OF REPORT
+======================================================================
+[2026-02-04 12:43:45] [INFO    ] [main] 
+── Migration finished in 11.3 seconds ──
+[2026-02-04 14:40:44] [INFO    ] [main] ============================================================
+[2026-02-04 14:40:44] [INFO    ] [main]   ES 6.4.2 → 8.11 Migration  |  2026-02-04 14:40:44
+[2026-02-04 14:40:44] [INFO    ] [main] ============================================================
+[2026-02-04 14:40:44] [INFO    ] [main] ── Preflight checks ──
+[2026-02-04 14:40:44] [INFO    ] [main] OLD  cluster reachable – version 6.4.2  (http://localhost:9201)
+[2026-02-04 14:40:44] [INFO    ] [main] NEW  cluster reachable – version 8.11.0  (http://localhost:9200)
+[2026-02-04 14:40:44] [INFO    ] [main] ── Preflight OK ──
+
+[2026-02-04 14:40:44] [INFO    ] [main] 
+[PHASE 1] Starting Kafka consumer in background …
+[2026-02-04 14:40:44] [INFO    ] [main] Kafka consumer thread started (tid=123151433672384)
+[2026-02-04 14:40:44] [INFO    ] [kafka_consumer] No prefix set – subscribing to ALL 0 topics: set()
+[2026-02-04 14:40:44] [ERROR   ] [kafka_consumer] No Kafka topics found – exiting consumer.
+[2026-02-04 14:40:47] [INFO    ] [main] 
+[PHASE 2] Starting bulk reindex …
+[2026-02-04 14:40:47] [INFO    ] [reindex_engine] Discovered 2 indices to migrate: ['chb-booking-application-index', 'products']
+[2026-02-04 14:40:47] [INFO    ] [reindex_engine] [chb-booking-application-index] Fetching mapping & settings …
+[2026-02-04 14:40:47] [INFO    ] [reindex_engine] [products] Fetching mapping & settings …
+[2026-02-04 14:40:47] [INFO    ] [mapping_transformer] Transforming index 'products' …
+[2026-02-04 14:40:47] [DEBUG   ] [mapping_transformer] Unwrapped mapping type 'doc'
+[2026-02-04 14:40:47] [DEBUG   ] [mapping_transformer] Removed auto-managed setting 'creation_date'
+[2026-02-04 14:40:47] [DEBUG   ] [mapping_transformer] Removed auto-managed setting 'uuid'
+[2026-02-04 14:40:47] [DEBUG   ] [mapping_transformer] Removed auto-managed setting 'version'
+[2026-02-04 14:40:47] [DEBUG   ] [mapping_transformer] Removed auto-managed setting 'provided_name'
+[2026-02-04 14:40:47] [DEBUG   ] [mapping_transformer] Transformed mapping:
+{
+  "properties": {
+    "category": {
+      "type": "keyword"
+    },
+    "name": {
+      "type": "text"
+    },
+    "price": {
+      "type": "float"
+    }
+  }
+}
+[2026-02-04 14:40:47] [INFO    ] [mapping_transformer] Transforming index 'chb-booking-application-index' …
+[2026-02-04 14:40:47] [DEBUG   ] [mapping_transformer] Unwrapped mapping type 'general'
+[2026-02-04 14:40:47] [DEBUG   ] [mapping_transformer] Removed auto-managed setting 'creation_date'
+[2026-02-04 14:40:47] [DEBUG   ] [mapping_transformer] Removed auto-managed setting 'uuid'
+[2026-02-04 14:40:47] [DEBUG   ] [mapping_transformer] Removed auto-managed setting 'version'
+[2026-02-04 14:40:47] [DEBUG   ] [mapping_transformer] Removed auto-managed setting 'provided_name'
+[2026-02-04 14:40:47] [DEBUG   ] [mapping_transformer] Transformed mapping:
+{
+  "properties": {
+    "Data": {
+      "properties": {
+        "addressId": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "addressLine1": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "applicantDetailId": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "applicantEmailId": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "applicantMobileNo": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "applicantName": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "applicationDate": {
+          "type": "long"
+        },
+        "bookingId": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "bookingNo": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "bookingSlotDetails": {
+          "properties": {
+            "auditDetails": {
+              "properties": {
+                "createdBy": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword",
+                      "ignore_above": 256
+                    }
+                  }
+                },
+                "createdTime": {
+                  "type": "long"
+                },
+                "lastModifiedBy": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword",
+                      "ignore_above": 256
+                    }
+                  }
+                },
+                "lastModifiedTime": {
+                  "type": "long"
+                }
+              }
+            },
+            "bookingDate": {
+              "type": "date"
+            },
+            "bookingEndDate": {
+              "type": "date"
+            },
+            "bookingFromTime": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "bookingId": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "bookingToTime": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "capacity": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "hallCode": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "slotId": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "status": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            }
+          }
+        },
+        "bookingStatus": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "communityHallCode": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "communityHallName": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "createdBy": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "createdTime": {
+          "type": "long"
+        },
+        "lastModifiedBy": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "lastModifiedTime": {
+          "type": "long"
+        },
+        "owners": {
+          "properties": {
+            "accountLocked": {
+              "type": "boolean"
+            },
+            "active": {
+              "type": "boolean"
+            },
+            "correspondenceAddress": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "correspondenceCity": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "correspondencePinCode": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "createdBy": {
+              "type": "long"
+            },
+            "createdDate": {
+              "type": "long"
+            },
+            "dob": {
+              "type": "long"
+            },
+            "emailId": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "fatherOrHusbandName": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "gender": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "id": {
+              "type": "long"
+            },
+            "lastModifiedBy": {
+              "type": "long"
+            },
+            "lastModifiedDate": {
+              "type": "long"
+            },
+            "mobileNumber": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "name": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "ownerId": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "pan": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "permanentAddress": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "permanentCity": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "permanentPinCode": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "pwdExpiryDate": {
+              "type": "long"
+            },
+            "roles": {
+              "properties": {
+                "code": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword",
+                      "ignore_above": 256
+                    }
+                  }
+                },
+                "name": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword",
+                      "ignore_above": 256
+                    }
+                  }
+                },
+                "tenantId": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword",
+                      "ignore_above": 256
+                    }
+                  }
+                }
+              }
+            },
+            "tenantId": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "type": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "userName": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "uuid": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            }
+          }
+        },
+        "paymentDate": {
+          "type": "long"
+        },
+        "paymentReceiptFilestoreId": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "permissionLetterFilestoreId": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "purpose": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "purposeDescription": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "receiptNo": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "specialCategory": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "tenantId": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "workflow": {
+          "properties": {
+            "action": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+[2026-02-04 14:40:47] [INFO    ] [reindex_engine] [products] Index already exists on new cluster – skipping creation.
+[2026-02-04 14:40:47] [INFO    ] [reindex_engine] [products] Starting scroll + bulk reindex …
+[2026-02-04 14:40:47] [INFO    ] [reindex_engine] [chb-booking-application-index] Creating index on new cluster …
+[2026-02-04 14:40:47] [DEBUG   ] [reindex_engine] [chb-booking-application-index] Create body: {
+  "mappings": {
+    "properties": {
+      "Data": {
+        "properties": {
+          "addressId": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "addressLine1": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "applicantDetailId": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "applicantEmailId": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "applicantMobileNo": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "applicantName": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "applicationDate": {
+            "type": "long"
+          },
+          "bookingId": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "bookingNo": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "bookingSlotDetails": {
+            "properties": {
+              "auditDetails": {
+                "properties": {
+                  "createdBy": {
+                    "type": "text",
+                    "fields": {
+                      "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                      }
+                    }
+                  },
+                  "createdTime": {
+                    "type": "long"
+                  },
+                  "lastModifiedBy": {
+                    "type": "text",
+                    "fields": {
+                      "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                      }
+                    }
+                  },
+                  "lastModifiedTime": {
+                    "type": "long"
+                  }
+                }
+              },
+              "bookingDate": {
+                "type": "date"
+              },
+              "bookingEndDate": {
+                "type": "date"
+              },
+              "bookingFromTime": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "bookingId": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "bookingToTime": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "capacity": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "hallCode": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "slotId": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "status": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              }
+            }
+          },
+          "bookingStatus": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "communityHallCode": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "communityHallName": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "createdBy": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "createdTime": {
+            "type": "long"
+          },
+          "lastModifiedBy": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "lastModifiedTime": {
+            "type": "long"
+          },
+          "owners": {
+            "properties": {
+              "accountLocked": {
+                "type": "boolean"
+              },
+              "active": {
+                "type": "boolean"
+              },
+              "correspondenceAddress": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "correspondenceCity": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "correspondencePinCode": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "createdBy": {
+                "type": "long"
+              },
+              "createdDate": {
+                "type": "long"
+              },
+              "dob": {
+                "type": "long"
+              },
+              "emailId": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "fatherOrHusbandName": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "gender": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "id": {
+                "type": "long"
+              },
+              "lastModifiedBy": {
+                "type": "long"
+              },
+              "lastModifiedDate": {
+                "type": "long"
+              },
+              "mobileNumber": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "name": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "ownerId": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "pan": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "permanentAddress": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "permanentCity": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "permanentPinCode": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "pwdExpiryDate": {
+                "type": "long"
+              },
+              "roles": {
+                "properties": {
+                  "code": {
+                    "type": "text",
+                    "fields": {
+                      "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                      }
+                    }
+                  },
+                  "name": {
+                    "type": "text",
+                    "fields": {
+                      "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                      }
+                    }
+                  },
+                  "tenantId": {
+                    "type": "text",
+                    "fields": {
+                      "keyword": {
+                        "type": "keyword",
+                        "ignore_above": 256
+                      }
+                    }
+                  }
+                }
+              },
+              "tenantId": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "type": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "userName": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              },
+              "uuid": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              }
+            }
+          },
+          "paymentDate": {
+            "type": "long"
+          },
+          "paymentReceiptFilestoreId": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "permissionLetterFilestoreId": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "purpose": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "purposeDescription": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "receiptNo": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "specialCategory": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "tenantId": {
+            "type": "text",
+            "fields": {
+              "keyword": {
+                "type": "keyword",
+                "ignore_above": 256
+              }
+            }
+          },
+          "workflow": {
+            "properties": {
+              "action": {
+                "type": "text",
+                "fields": {
+                  "keyword": {
+                    "type": "keyword",
+                    "ignore_above": 256
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "settings": {
+    "index": {
+      "number_of_shards": "5",
+      "number_of_replicas": "1"
+    }
+  }
+}
+[2026-02-04 14:40:47] [INFO    ] [reindex_engine] [products] Page 1 done – 6 docs migrated so far …
+[2026-02-04 14:40:47] [INFO    ] [reindex_engine] [products] Validating counts …
+[2026-02-04 14:40:49] [INFO    ] [reindex_engine] [products] ✓ Migration complete. 6 docs verified.
+[2026-02-04 14:40:54] [INFO    ] [reindex_engine] [chb-booking-application-index] Starting scroll + bulk reindex …
+[2026-02-04 14:40:55] [INFO    ] [reindex_engine] [chb-booking-application-index] Page 1 done – 10 docs migrated so far …
+[2026-02-04 14:40:55] [INFO    ] [reindex_engine] [chb-booking-application-index] Validating counts …
+[2026-02-04 14:40:57] [INFO    ] [reindex_engine] [chb-booking-application-index] ✓ Migration complete. 10 docs verified.
+[2026-02-04 14:40:57] [INFO    ] [main] [PHASE 2] Bulk reindex complete.
+[2026-02-04 14:40:57] [INFO    ] [main] 
+[PHASE 3] Kafka consumer already stopped / was not started.
+[2026-02-04 14:40:57] [INFO    ] [main] 
+[PHASE 4] Running validation …
+[2026-02-04 14:40:59] [INFO    ] [validator] [chb-booking-application-index] old=10  new=10  ✓ MATCH
+[2026-02-04 14:40:59] [INFO    ] [validator] [products] old=6  new=6  ✓ MATCH
+[2026-02-04 14:40:59] [INFO    ] [validator] New cluster health: yellow  (clusters=docker-cluster, nodes=1)
+[2026-02-04 14:40:59] [DEBUG   ] [validator] [chb-booking-application-index] Doc 8119a4ec-5ae2-48db-9a29-b88dfd947fbd – OK
+[2026-02-04 14:40:59] [DEBUG   ] [validator] [chb-booking-application-index] Doc 3d64806f-9a67-4b44-a4fb-a24de9b3ef41 – OK
+[2026-02-04 14:40:59] [DEBUG   ] [validator] [chb-booking-application-index] Doc f7aefe43-2843-46e0-82b1-3aad3d99603d – OK
+[2026-02-04 14:40:59] [DEBUG   ] [validator] [chb-booking-application-index] Doc f5d65c81-26d2-4fa5-85de-ed1e69e6bcf0 – OK
+[2026-02-04 14:40:59] [DEBUG   ] [validator] [chb-booking-application-index] Doc 8c70e9d1-68ad-48a0-8ab7-243e99170b0b – OK
+[2026-02-04 14:40:59] [DEBUG   ] [validator] [chb-booking-application-index] Doc f236ea17-f360-4d90-9efc-9f4709f6035b – OK
+[2026-02-04 14:40:59] [DEBUG   ] [validator] [chb-booking-application-index] Doc dc66eab8-aab6-4a86-bd41-5f9cb973f583 – OK
+[2026-02-04 14:40:59] [DEBUG   ] [validator] [chb-booking-application-index] Doc 8b045d38-0eba-4f63-b349-b7da873ab484 – OK
+[2026-02-04 14:40:59] [DEBUG   ] [validator] [chb-booking-application-index] Doc 23f06c82-b8d3-44f5-bbcb-490dd272c4e8 – OK
+[2026-02-04 14:40:59] [DEBUG   ] [validator] [chb-booking-application-index] Doc 9d466c66-986f-4956-94b1-4ab73e83bd6e – OK
+[2026-02-04 14:40:59] [DEBUG   ] [validator] [products] Doc 4ix8J5wBQ8wWNbDWTWj1 – OK
+[2026-02-04 14:40:59] [DEBUG   ] [validator] [products] Doc 4yx8J5wBQ8wWNbDWcWgl – OK
+[2026-02-04 14:40:59] [DEBUG   ] [validator] [products] Doc 5Cx8J5wBQ8wWNbDWcWjX – OK
+[2026-02-04 14:40:59] [DEBUG   ] [validator] [products] Doc 5Sx8J5wBQ8wWNbDWcmg1 – OK
+[2026-02-04 14:40:59] [DEBUG   ] [validator] [products] Doc 5ix8J5wBQ8wWNbDWcmiU – OK
+[2026-02-04 14:40:59] [DEBUG   ] [validator] [products] Doc 5yx8J5wBQ8wWNbDWc2gM – OK
+[2026-02-04 14:40:59] [INFO    ] [validator] 
+======================================================================
+        ELASTICSEARCH MIGRATION VALIDATION REPORT
+        Generated: 2026-02-04 14:40:59
+======================================================================
+
+── CLUSTER HEALTH (new 8.x) ─────────────────────────────────────
+   Status        : YELLOW
+   Cluster name  : docker-cluster
+   Nodes         : 1
+   Shards        : active=34 / unassigned=5
+
+── INDEX COUNT COMPARISON ────────────────────────────────────────
+   Index                                    Old      New   Diff  Status
+   -----------------------------------------------------------------
+   chb-booking-application-index             10       10     +0  ✓ MATCH
+   products                                   6        6     +0  ✓ MATCH
+   -----------------------------------------------------------------
+   TOTAL                                     16       16     +0  ✓ ALL MATCH
+
+── DOCUMENT SAMPLE CHECKS ────────────────────────────────────────
+   chb-booking-application-index: 10/10 docs match
+   products: 6/6 docs match
+   Total: 16/16 docs verified
+
+── MIGRATION TIMING ──────────────────────────────────────────────
+   Index                                   Docs  Time (s)  Status
+   -----------------------------------------------------------------
+   products                                   6       2.2  ✓ OK
+   chb-booking-application-index             10       9.8  ✓ OK
+
+======================================================================
+  END OF REPORT
+======================================================================
+[2026-02-04 14:40:59] [INFO    ] [main] 
+── Migration finished in 15.0 seconds ──
