@@ -149,8 +149,25 @@ def transform_index(index_name: str,
     pass directly to the 8.x create-index API.
     """
     logger.info("Transforming index '%s' …", index_name)
+    # Some cluster responses (or previous processing) may leave an
+    # extra 'mappings' wrapper around the mapping dict. Normalise
+    # that first so downstream unwrapping always sees either a
+    # type-wrapped mapping or a plain properties dict.
+    if isinstance(raw_mapping, dict) and "mappings" in raw_mapping:
+        inner = raw_mapping.get("mappings")
+        if isinstance(inner, dict):
+            raw_mapping = inner
 
     mapping  = _strip_type_wrapper(raw_mapping)
+
+    # If the mapping still contains a 'mappings' wrapper (e.g. when the
+    # original payload was keyed by a different index name and we returned
+    # the inner dict), unwrap it so we end up with a plain properties dict.
+    if isinstance(mapping, dict) and "mappings" in mapping and isinstance(mapping["mappings"], dict):
+        logger.debug("Normalizing nested 'mappings' wrapper")
+        mapping = mapping["mappings"]
+        mapping = _strip_type_wrapper(mapping)
+
     mapping  = _rename_deprecated_types(mapping)
     settings = clean_settings(raw_settings)
 
