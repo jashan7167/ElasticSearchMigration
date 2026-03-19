@@ -1,0 +1,55 @@
+curl -X PUT "http://10.44.237.233:30920/property-assessments-enriched/_settings" \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "index": {
+      "refresh_interval": "-1",
+      "number_of_replicas": 0,
+      "translog.durability": "async",
+      "translog.flush_threshold_size": "1gb"
+    }
+  }'
+
+for INDEX in water-services pgrindex-v1 pgrindex-v1-enriched chatbot-messages-v2 water-services-enriched tlindex-v1-tmp-1 tlindex-v1 tlindex-v1-enriched property-application sewerage-services sewerage-services-enriched; do
+  echo "Applying settings to: $INDEX"
+  curl -s -X PUT "http://10.44.237.233:30920/${INDEX}/_settings" \
+    -H 'Content-Type: application/json' \
+    -d '{
+      "index": {
+        "refresh_interval"                 : "-1",
+        "number_of_replicas"               : 0,
+        "translog.durability"              : "async",
+        "translog.flush_threshold_size"    : "2gb",
+        "translog.sync_interval"           : "60s",
+        "merge.scheduler.max_thread_count" : 2,
+        "merge.policy.segments_per_tier"   : 24,
+        "merge.policy.floor_segment"       : "100mb"
+      }
+    }'
+  echo ""
+done
+
+curl -X POST "http://10.44.237.233:30920/paymentsindex-v1-temp/_refresh"
+
+
+
+curl -X PUT "http://10.44.237.233:30920/paymentsindex-v1-1apr-14dec-2025-26/_settings" \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "index": {
+      "refresh_interval"                 : "-1",
+      "number_of_replicas"               : 0,
+      "translog.durability"              : "async",
+      "translog.flush_threshold_size"    : "2gb",
+      "translog.sync_interval"           : "60s",
+      "merge.scheduler.max_thread_count" : 2,
+      "merge.policy.segments_per_tier"   : 24,
+      "merge.policy.floor_segment"       : "100mb"
+    }
+  }'
+
+
+curl -s "http://10.44.237.233:30920/_nodes/elasticsearch-data-v2-2/stats/indices?pretty" | grep -E "index_total|index_time|flush_total"
+
+curl -s "http://10.44.237.233:30920/_cat/nodes?v&h=name,heap.max,heap.current,heap.percent,ram.max,node.role,ram.percent,ram.current"
+
+curl -s "http://10.44.237.233:30920/_cat/thread_pool?v&h=node_name,name,active,queue,rejected" | awk 'NR==1 || $3!="0" || $4!="0" || $5!="0"'

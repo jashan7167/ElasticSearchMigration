@@ -1,0 +1,8 @@
+echo "=== NODES ===" && \
+curl -s "http://10.44.237.233:30920/_cat/nodes?v&h=name,cpu,ram.percent,heap.percent,load_1m,load_5m,load_15m,node.role" && \
+echo "\n=== THREAD POOLS ===" && \
+curl -s "http://10.44.237.233:30920/_cat/thread_pool/write,search,bulk?v" && \
+echo "\n=== CLUSTER HEALTH ===" && \
+curl -s "http://10.44.237.233:30920/_cluster/health?pretty" && \
+echo "\n=== PENDING TASKS ===" && \
+curl -s "http://10.44.237.233:30920/_cluster/pending_tasks?pretty"

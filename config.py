@@ -44,13 +44,13 @@ class MigrationConfig:
     # ── Throughput ────────────────────────────────────────────────────
     # 65 cores → reserve ~5 for OS/ES overhead → 60 usable
     # 3 nodes → each node handles ~20 parallel shard streams comfortably
-    parallel_workers: int = int(os.getenv("MIGRATION_PARALLEL_WORKERS", "48"))
+    parallel_workers: int = int(os.getenv("MIGRATION_PARALLEL_WORKERS", "8"))
     # Bulk size: 1000–2000 docs is sweet spot for large docs;
     # push to 2000 since you have CPU headroom + fast network assumed.
-    bulk_size: int = int(os.getenv("MIGRATION_BULK_SIZE", "2000"))
+    bulk_size: int = int(os.getenv("MIGRATION_BULK_SIZE", "1000"))
     # Scroll: 10 000 keeps heap pressure reasonable on 3-node cluster.
     # Go higher only if your ES heap is ≥ 30 GB per node.
-    scroll_size: int = int(os.getenv("MIGRATION_SCROLL_SIZE", "10000"))
+    scroll_size: int = int(os.getenv("MIGRATION_SCROLL_SIZE", "5000"))
 
     # ── Timeout guards ────────────────────────────────────────────────
     # 20 min bulk timeout — covers huge indices with slow flush
@@ -60,7 +60,7 @@ class MigrationConfig:
     min_bulk_chunk_size: int = int(os.getenv("MIGRATION_MIN_BULK_CHUNK_SIZE", "100"))
     max_retries: int = int(os.getenv("MIGRATION_MAX_RETRIES", "7"))
     retry_delay_sec: int = int(os.getenv("MIGRATION_RETRY_DELAY_SEC", "5"))
-    resume_enabled: bool = _env_flag("MIGRATION_RESUME_ENABLED", "true")
+    resume_enabled: bool = _env_flag("MIGRATION_RESUME_ENABLED", "false")
     checkpoint_file: str = os.getenv(
         "MIGRATION_CHECKPOINT_FILE", ".migration_checkpoints.json"
     )
