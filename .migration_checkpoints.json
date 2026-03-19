@@ -1,0 +1,14 @@
+{
+  "property-application": {
+    "docs_migrated": 412300,
+    "last_error": "",
+    "state": "in_progress",
+    "updated_at": 1773597213
+  },
+  "property-services": {
+    "docs_migrated": 1985000,
+    "last_error": "",
+    "state": "count_mismatch",
+    "updated_at": 1773604604
+  }
+}

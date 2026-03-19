@@ -14,10 +14,12 @@ Flow per index
 """
 
 import json
+import os
+import threading
 import time
 import traceback
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from typing import Dict, List, Tuple
+from typing import Any, Dict, List, Tuple
 
 from logger               import get_logger
 from config               import MIGRATION
@@ -25,6 +27,67 @@ from es_client            import get_old_client, get_new_client
 from mapping_transformer  import transform_index
 
 logger = get_logger("reindex_engine")
+
+_CHECKPOINT_LOCK = threading.Lock()
+
+
+def _load_checkpoints() -> Dict[str, Dict[str, Any]]:
+    path = MIGRATION.checkpoint_file
+    if not os.path.exists(path):
+        return {}
+    try:
+        with open(path, "r", encoding="utf-8") as fp:
+            data = json.load(fp)
+        if isinstance(data, dict):
+            return data
+    except Exception as exc:
+        logger.warning("Could not read checkpoint file '%s': %s", path, exc)
+    return {}
+
+
+def _save_checkpoints(data: Dict[str, Dict[str, Any]]):
+    path = MIGRATION.checkpoint_file
+    tmp = f"{path}.tmp"
+    with open(tmp, "w", encoding="utf-8") as fp:
+        json.dump(data, fp, indent=2, sort_keys=True)
+    os.replace(tmp, path)
+
+
+def _get_checkpoint_docs(index_name: str) -> int:
+    if not MIGRATION.resume_enabled:
+        return 0
+    with _CHECKPOINT_LOCK:
+        checkpoints = _load_checkpoints()
+        value = checkpoints.get(index_name, {}).get("docs_migrated", 0)
+        try:
+            return max(0, int(value))
+        except Exception:
+            return 0
+
+
+def _update_checkpoint(index_name: str, docs_migrated: int, state: str,
+                       error: str = ""):
+    if not MIGRATION.resume_enabled:
+        return
+    with _CHECKPOINT_LOCK:
+        checkpoints = _load_checkpoints()
+        checkpoints[index_name] = {
+            "docs_migrated": int(max(0, docs_migrated)),
+            "state": state,
+            "updated_at": int(time.time()),
+            "last_error": error,
+        }
+        _save_checkpoints(checkpoints)
+
+
+def _clear_checkpoint(index_name: str):
+    if not MIGRATION.resume_enabled:
+        return
+    with _CHECKPOINT_LOCK:
+        checkpoints = _load_checkpoints()
+        if index_name in checkpoints:
+            del checkpoints[index_name]
+            _save_checkpoints(checkpoints)
 
 
 # ──────────────────────────────────────────────
@@ -47,7 +110,8 @@ def _build_bulk_body(index: str, hits: List[Dict]) -> str:
 
 
 def _retry(fn, max_retries: int = MIGRATION.max_retries,
-           delay: int = MIGRATION.retry_delay_sec):
+           delay: int = MIGRATION.retry_delay_sec,
+           retryable=None):
     """Generic retry wrapper with exponential back-off."""
     last_exc = None
     for attempt in range(1, max_retries + 1):
@@ -55,11 +119,59 @@ def _retry(fn, max_retries: int = MIGRATION.max_retries,
             return fn()
         except Exception as exc:
             last_exc = exc
+            if retryable is not None and not retryable(exc):
+                raise
             wait = delay * (2 ** (attempt - 1))
             logger.warning("Attempt %d/%d failed: %s – retrying in %ds …",
                            attempt, max_retries, exc, wait)
             time.sleep(wait)
     raise last_exc
+
+
+def _is_http_413(exc: Exception) -> bool:
+    """Best-effort check for HTTP 413 Request Entity Too Large."""
+    response = getattr(exc, "response", None)
+    return bool(response is not None and getattr(response, "status_code", None) == 413)
+
+
+def _bulk_with_fallback(new_client, index_name: str, docs: List[Dict],
+                        min_chunk_size: int = MIGRATION.min_bulk_chunk_size) -> Dict:
+    """
+    Send bulk docs with retries. If a large chunk keeps timing out, split it
+    recursively into smaller chunks until it succeeds or reaches min_chunk_size.
+    """
+    if not docs:
+        return {"errors": False, "items": []}
+
+    body = _build_bulk_body(index_name, docs)
+    try:
+        return _retry(
+            lambda b=body: new_client.bulk(b),
+            retryable=lambda exc: not _is_http_413(exc),
+        )
+    except Exception as exc:
+        if len(docs) <= max(1, min_chunk_size):
+            raise
+
+        mid = len(docs) // 2
+        left_docs = docs[:mid]
+        right_docs = docs[mid:]
+        logger.warning(
+            "[%s] Bulk chunk of %d docs failed (%s). Retrying as %d + %d docs …",
+            index_name,
+            len(docs),
+            exc,
+            len(left_docs),
+            len(right_docs),
+        )
+
+        left_result = _bulk_with_fallback(new_client, index_name, left_docs, min_chunk_size)
+        right_result = _bulk_with_fallback(new_client, index_name, right_docs, min_chunk_size)
+
+        return {
+            "errors": left_result.get("errors") or right_result.get("errors"),
+            "items": left_result.get("items", []) + right_result.get("items", []),
+        }
 
 
 # ──────────────────────────────────────────────
@@ -117,18 +229,33 @@ def migrate_single_index(index_name: str) -> Dict:
 
         # ── 4. scroll + bulk ─────────────────────────────────────
         logger.info("[%s] Starting scroll + bulk reindex …", index_name)
-        total_migrated = 0
+        resume_from = _get_checkpoint_docs(index_name)
+        total_migrated = resume_from
+        docs_to_skip = resume_from
         page_num       = 0
+
+        if resume_from:
+            logger.info("[%s] Resume enabled – skipping first %d already-migrated docs.",
+                        index_name, resume_from)
 
         for scroll_id, hits in old.scroll_search(index_name, scroll_size=MIGRATION.scroll_size):
             page_num += 1
+            if docs_to_skip:
+                if docs_to_skip >= len(hits):
+                    docs_to_skip -= len(hits)
+                    logger.info("[%s] Page %d skipped due to checkpoint (%d docs left to skip) …",
+                                index_name, page_num, docs_to_skip)
+                    continue
+
+                hits = hits[docs_to_skip:]
+                logger.info("[%s] Page %d partially skipped %d docs due to checkpoint.",
+                            index_name, page_num, docs_to_skip)
+                docs_to_skip = 0
+
             # chunk into bulk_size batches
             for i in range(0, len(hits), MIGRATION.bulk_size):
                 chunk = hits[i : i + MIGRATION.bulk_size]
-                body  = _build_bulk_body(index_name, chunk)
-
-                # retry-wrapped bulk call
-                result = _retry(lambda b=body: new.bulk(b))
+                result = _bulk_with_fallback(new, index_name, chunk)
 
                 # check for per-doc errors inside bulk response
                 if result.get("errors"):
@@ -144,6 +271,8 @@ def migrate_single_index(index_name: str) -> Dict:
                                            index_name, info.get("_id"), info["error"])
 
                 total_migrated += len(chunk)
+                status["docs_migrated"] = total_migrated
+                _update_checkpoint(index_name, total_migrated, state="in_progress")
 
             logger.info("[%s] Page %d done – %d docs migrated so far …",
                         index_name, page_num, total_migrated)
@@ -159,9 +288,11 @@ def migrate_single_index(index_name: str) -> Dict:
 
         if status["docs_source"] == status["docs_dest"]:
             status["success"] = True
+            _clear_checkpoint(index_name)
             logger.info("[%s] ✓ Migration complete. %d docs verified.",
                         index_name, status["docs_dest"])
         else:
+            _update_checkpoint(index_name, total_migrated, state="count_mismatch")
             logger.warning(
                 "[%s] ⚠ Count mismatch – source: %d  dest: %d",
                 index_name, status["docs_source"], status["docs_dest"],
@@ -169,6 +300,8 @@ def migrate_single_index(index_name: str) -> Dict:
 
     except Exception as exc:
         status["errors"].append(str(exc))
+        _update_checkpoint(index_name, status.get("docs_migrated", _get_checkpoint_docs(index_name)),
+                           state="failed", error=str(exc))
         logger.error("[%s] Migration FAILED:\n%s", index_name, traceback.format_exc())
 
     finally:

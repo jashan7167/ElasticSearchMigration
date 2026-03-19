@@ -91,22 +91,25 @@ def dry_run(indices: Optional[List[str]] = None):
         logger.info("    %-40s %d docs", idx, count)
 
     # Kafka topics
-    try:
-        from confluent_kafka import Consumer
-        consumer = Consumer({
-            "bootstrap.servers": KAFKA.bootstrap_servers,
-            "group.id":          KAFKA.consumer_group,
-        })
-        from kafka_consumer import discover_topics
-        topics = discover_topics(consumer)
-        consumer.close()
-        logger.info("\nKafka topics (%d):", len(topics))
-        for t in topics:
-            logger.info("    %s", t)
-    except ImportError:
-        logger.warning("\nconfluent-kafka not installed – skipping topic discovery.")
-    except Exception as exc:
-        logger.warning("\nKafka topic discovery failed: %s", exc)
+    if not KAFKA.enabled:
+        logger.info("\nKafka discovery skipped (KAFKA_ENABLED=false).")
+    else:
+        try:
+            from confluent_kafka import Consumer
+            consumer = Consumer({
+                "bootstrap.servers": KAFKA.bootstrap_servers,
+                "group.id":          KAFKA.consumer_group,
+            })
+            from kafka_consumer import discover_topics
+            topics = discover_topics(consumer)
+            consumer.close()
+            logger.info("\nKafka topics (%d):", len(topics))
+            for t in topics:
+                logger.info("    %s", t)
+        except ImportError:
+            logger.warning("\nconfluent-kafka not installed – skipping topic discovery.")
+        except Exception as exc:
+            logger.warning("\nKafka topic discovery failed: %s", exc)
 
     logger.info("── END DRY RUN ─────────────────────────────────\n")
 
@@ -122,6 +125,7 @@ def run_migration(indices: Optional[List[str]] = None,
     Main orchestration loop.
     """
     start = time.time()
+    run_kafka = run_kafka and KAFKA.enabled
     kafka_stop   = threading.Event()
     kafka_thread = None
     migration_results = []
@@ -138,14 +142,24 @@ def run_migration(indices: Optional[List[str]] = None,
         logger.info("Kafka consumer thread started (tid=%s)", kafka_thread.ident)
         # small grace period so consumer can subscribe
         time.sleep(3)
+        if not kafka_thread.is_alive():
+            logger.warning("Kafka consumer exited early; continuing with bulk reindex only.")
     else:
-        logger.info("\n[PHASE 1] Kafka consumer SKIPPED (--reindex-only or --validate-only)")
+        if not KAFKA.enabled:
+            logger.info("\n[PHASE 1] Kafka consumer SKIPPED (KAFKA_ENABLED=false)")
+        else:
+            logger.info("\n[PHASE 1] Kafka consumer SKIPPED (--reindex-only or --validate-only)")
 
     # ── ② Bulk reindex ─────────────────────────────────────────────
     if run_reindex:
         logger.info("\n[PHASE 2] Starting bulk reindex …")
         migration_results = migrate_all_indices(indices)
-        logger.info("[PHASE 2] Bulk reindex complete.")
+        failed = [r.get("index") for r in migration_results if not r.get("success")]
+        if failed:
+            logger.warning("[PHASE 2] Bulk reindex finished with failures for %d index(es): %s",
+                           len(failed), failed)
+        else:
+            logger.info("[PHASE 2] Bulk reindex complete.")
     else:
         logger.info("\n[PHASE 2] Bulk reindex SKIPPED")
 
@@ -242,6 +256,9 @@ def main():
     run_validate= not (args.kafka_only   or args.reindex_only)
 
     if args.kafka_only:
+        if not KAFKA.enabled:
+            logger.warning("Kafka is disabled via KAFKA_ENABLED=false; exiting without starting consumer.")
+            return
         # blocking: run consumer until SIGINT
         run_consumer()
         return

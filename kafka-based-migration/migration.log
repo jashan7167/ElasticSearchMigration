@@ -4968,3 +4968,2962 @@ requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: http://loc
 ============================================================
 [2026-02-04 15:41:08] [INFO    ] [main]   Migration Complete
 [2026-02-04 15:41:08] [INFO    ] [main] ============================================================
+[2026-02-04 15:46:07] [INFO    ] [main] ============================================================
+[2026-02-04 15:46:07] [INFO    ] [main]   ES 6.4.2 → 8.11 Migration (Kafka-Based)
+[2026-02-04 15:46:07] [INFO    ] [main] ============================================================
+[2026-02-04 15:46:07] [INFO    ] [main] ── Preflight checks ──
+[2026-02-04 15:46:07] [INFO    ] [main] OLD  cluster reachable – version 6.4.2  (http://localhost:9201)
+[2026-02-04 15:46:07] [INFO    ] [main] NEW  cluster reachable – version 8.11.0  (http://localhost:9200)
+[2026-02-04 15:46:07] [INFO    ] [main] KAFKA reachable – 4 topics (localhost:9092)
+[2026-02-04 15:46:07] [INFO    ] [main] ── Preflight OK ──
+
+[2026-02-04 15:46:07] [INFO    ] [main] 
+[PHASE 1] Starting Producer (Old ES → Kafka)...
+[2026-02-04 15:46:07] [INFO    ] [producer] ============================================================
+[2026-02-04 15:46:07] [INFO    ] [producer]   ES → Kafka Producer (Bulk Migration)
+[2026-02-04 15:46:07] [INFO    ] [producer] ============================================================
+[2026-02-04 15:46:07] [INFO    ] [producer] Old ES: http://localhost:9201
+[2026-02-04 15:46:07] [INFO    ] [producer] Kafka:  localhost:9092
+[2026-02-04 15:46:07] [INFO    ] [producer] 
+[2026-02-04 15:46:07] [INFO    ] [producer] Discovered 5 indices to migrate
+[2026-02-04 15:46:07] [INFO    ] [producer] Indices: layout-application-index, chb-booking-application-index, ndc-application-index, challan-generation-index, products
+[2026-02-04 15:46:07] [INFO    ] [producer] Creating 1 Kafka topics...
+[2026-02-04 15:46:08] [INFO    ] [producer]   ✓ Topic 'layout-application-index' created
+[2026-02-04 15:46:10] [INFO    ] [producer] [layout-application-index] Starting to publish documents...
+[2026-02-04 15:46:10] [INFO    ] [producer] [layout-application-index] ✓ Published 16 documents in 0.03 seconds (542 docs/sec)
+[2026-02-04 15:46:10] [INFO    ] [producer] [chb-booking-application-index] Starting to publish documents...
+[2026-02-04 15:46:10] [INFO    ] [producer] [chb-booking-application-index] ✓ Published 10 documents in 0.02 seconds (507 docs/sec)
+[2026-02-04 15:46:10] [INFO    ] [producer] [ndc-application-index] Starting to publish documents...
+[2026-02-04 15:46:10] [INFO    ] [producer] [ndc-application-index] ✓ Published 257 documents in 0.09 seconds (2902 docs/sec)
+[2026-02-04 15:46:10] [INFO    ] [producer] [challan-generation-index] Starting to publish documents...
+[2026-02-04 15:46:10] [INFO    ] [producer] [challan-generation-index] ✓ Published 60 documents in 0.03 seconds (2258 docs/sec)
+[2026-02-04 15:46:10] [INFO    ] [producer] [products] Starting to publish documents...
+[2026-02-04 15:46:10] [INFO    ] [producer] [products] ✓ Published 6 documents in 0.02 seconds (339 docs/sec)
+[2026-02-04 15:46:10] [INFO    ] [producer] 
+[2026-02-04 15:46:10] [INFO    ] [producer] ============================================================
+[2026-02-04 15:46:10] [INFO    ] [producer]   Producer Summary
+[2026-02-04 15:46:10] [INFO    ] [producer] ============================================================
+[2026-02-04 15:46:10] [INFO    ] [producer] Total documents published: 349
+[2026-02-04 15:46:10] [INFO    ] [producer] Failed deliveries: 0
+[2026-02-04 15:46:10] [INFO    ] [producer] 
+[2026-02-04 15:46:10] [INFO    ] [main] [PHASE 1] Producer complete.
+
+[2026-02-04 15:46:10] [INFO    ] [main] [PHASE 2] Starting Consumer (Kafka → New ES)...
+[2026-02-04 15:46:10] [INFO    ] [consumer] ============================================================
+[2026-02-04 15:46:10] [INFO    ] [consumer]   Kafka → ES Consumer (Bulk Migration)
+[2026-02-04 15:46:10] [INFO    ] [consumer] ============================================================
+[2026-02-04 15:46:10] [INFO    ] [consumer] Kafka:  localhost:9092
+[2026-02-04 15:46:10] [INFO    ] [consumer] New ES: http://localhost:9200
+[2026-02-04 15:46:10] [INFO    ] [consumer] Batch:  500 documents
+[2026-02-04 15:46:10] [INFO    ] [consumer] 
+[2026-02-04 15:46:10] [INFO    ] [consumer] Subscribing to 5 topics: ['ndc-application-index', 'challan-generation-index', 'products', 'layout-application-index', 'chb-booking-application-index']
+[2026-02-04 15:46:10] [INFO    ] [consumer] Consuming messages... (Ctrl+C to stop)
+[2026-02-04 15:46:10] [INFO    ] [consumer] 
+[2026-02-04 15:46:13] [INFO    ] [consumer] [chb-booking-application-index] Index already exists on new cluster
+[2026-02-04 15:46:13] [INFO    ] [consumer] [ndc-application-index] Index already exists on new cluster
+[2026-02-04 15:46:13] [INFO    ] [consumer] [products] Index already exists on new cluster
+[2026-02-04 15:46:13] [INFO    ] [consumer] [challan-generation-index] Index already exists on new cluster
+[2026-02-04 15:46:14] [INFO    ] [consumer] [layout-application-index] Creating index on new cluster...
+[2026-02-04 15:46:14] [INFO    ] [mapping_transformer] Transforming index 'layout-application-index' …
+[2026-02-04 15:46:14] [DEBUG   ] [mapping_transformer] Unwrapped mapping type 'general'
+[2026-02-04 15:46:14] [DEBUG   ] [mapping_transformer] Removed auto-managed setting 'creation_date'
+[2026-02-04 15:46:14] [DEBUG   ] [mapping_transformer] Removed auto-managed setting 'uuid'
+[2026-02-04 15:46:14] [DEBUG   ] [mapping_transformer] Removed auto-managed setting 'version'
+[2026-02-04 15:46:14] [DEBUG   ] [mapping_transformer] Removed auto-managed setting 'provided_name'
+[2026-02-04 15:46:14] [DEBUG   ] [mapping_transformer] Transformed mapping:
+{
+  "properties": {
+    "Data": {
+      "properties": {
+        "accountId": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "applicationNo": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "applicationStatus": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "applicationType": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "createdBy": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "createdTime": {
+          "type": "long"
+        },
+        "id": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "lastModifiedBy": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "lastModifiedTime": {
+          "type": "long"
+        },
+        "layoutDetails": {
+          "properties": {
+            "additionalDetails": {
+              "properties": {
+                "SourceRefId": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword",
+                      "ignore_above": 256
+                    }
+                  }
+                },
+                "SubmittedOn": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword",
+                      "ignore_above": 256
+                    }
+                  }
+                },
+                "applicationDetails": {
+                  "properties": {
+                    "applicantAddress": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "applicantDateOfBirth": {
+                      "type": "date"
+                    },
+                    "applicantEmailId": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "applicantFatherHusbandName": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "applicantGender": {
+                      "properties": {
+                        "code": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "i18nKey": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "value": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "applicantMobileNumber": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "applicantOwnerOrFirmName": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "professionalAddress": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "professionalEmailId": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "professionalMobileNumber": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "professionalName": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "professionalRegId": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "professionalRegistrationValidity": {
+                      "type": "date"
+                    }
+                  }
+                },
+                "siteDetails": {
+                  "properties": {
+                    "areaLeftForRoadWidening": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "areaUnderCommercialUseInPct": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "areaUnderCommercialUseInSqM": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "areaUnderCommunityCenterInPct": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "areaUnderCommunityCenterInSqM": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "areaUnderEWSInPct": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "areaUnderEWSInSqM": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "areaUnderInstutionalUseInPct": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "areaUnderInstutionalUseInSqM": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "areaUnderOtherAmenitiesInPct": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "areaUnderOtherAmenitiesInSqM": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "areaUnderParkInPct": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "areaUnderParkInSqM": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "areaUnderParkingInPct": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "areaUnderParkingInSqM": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "areaUnderResidentialUseInPct": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "areaUnderResidentialUseInSqM": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "areaUnderRoadInPct": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "areaUnderRoadInSqM": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "areaUnderRoadWidening": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "balanceAreaInSqM": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "buildingCategory": {
+                      "properties": {
+                        "active": {
+                          "type": "boolean"
+                        },
+                        "code": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "name": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "buildingStatus": {
+                      "properties": {
+                        "active": {
+                          "type": "boolean"
+                        },
+                        "code": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "name": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "businessService": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "cluIsApproved": {
+                      "properties": {
+                        "code": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "i18nKey": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "cluNumber": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "district": {
+                      "properties": {
+                        "OfficeTimings": {
+                          "properties": {
+                            "Mon - Fri": {
+                              "type": "text",
+                              "fields": {
+                                "keyword": {
+                                  "type": "keyword",
+                                  "ignore_above": 256
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "PGRMasterContact": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "address": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "city": {
+                          "properties": {
+                            "code": {
+                              "type": "text",
+                              "fields": {
+                                "keyword": {
+                                  "type": "keyword",
+                                  "ignore_above": 256
+                                }
+                              }
+                            },
+                            "ddrName": {
+                              "type": "text",
+                              "fields": {
+                                "keyword": {
+                                  "type": "keyword",
+                                  "ignore_above": 256
+                                }
+                              }
+                            },
+                            "districtCode": {
+                              "type": "text",
+                              "fields": {
+                                "keyword": {
+                                  "type": "keyword",
+                                  "ignore_above": 256
+                                }
+                              }
+                            },
+                            "districtName": {
+                              "type": "text",
+                              "fields": {
+                                "keyword": {
+                                  "type": "keyword",
+                                  "ignore_above": 256
+                                }
+                              }
+                            },
+                            "districtTenantCode": {
+                              "type": "text",
+                              "fields": {
+                                "keyword": {
+                                  "type": "keyword",
+                                  "ignore_above": 256
+                                }
+                              }
+                            },
+                            "latitude": {
+                              "type": "float"
+                            },
+                            "localName": {
+                              "type": "text",
+                              "fields": {
+                                "keyword": {
+                                  "type": "keyword",
+                                  "ignore_above": 256
+                                }
+                              }
+                            },
+                            "longitude": {
+                              "type": "float"
+                            },
+                            "municipalityName": {
+                              "type": "text",
+                              "fields": {
+                                "keyword": {
+                                  "type": "keyword",
+                                  "ignore_above": 256
+                                }
+                              }
+                            },
+                            "name": {
+                              "type": "text",
+                              "fields": {
+                                "keyword": {
+                                  "type": "keyword",
+                                  "ignore_above": 256
+                                }
+                              }
+                            },
+                            "pwssb": {
+                              "type": "boolean"
+                            },
+                            "pwssbGrade": {
+                              "type": "text",
+                              "fields": {
+                                "keyword": {
+                                  "type": "keyword",
+                                  "ignore_above": 256
+                                }
+                              }
+                            },
+                            "regionCode": {
+                              "type": "text",
+                              "fields": {
+                                "keyword": {
+                                  "type": "keyword",
+                                  "ignore_above": 256
+                                }
+                              }
+                            },
+                            "regionName": {
+                              "type": "text",
+                              "fields": {
+                                "keyword": {
+                                  "type": "keyword",
+                                  "ignore_above": 256
+                                }
+                              }
+                            },
+                            "ulbGrade": {
+                              "type": "text",
+                              "fields": {
+                                "keyword": {
+                                  "type": "keyword",
+                                  "ignore_above": 256
+                                }
+                              }
+                            },
+                            "ulbType": {
+                              "type": "text",
+                              "fields": {
+                                "keyword": {
+                                  "type": "keyword",
+                                  "ignore_above": 256
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "code": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "contactNumber": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "description": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "domainUrl": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "emailId": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "i18nKey": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "logoId": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "name": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "type": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "floorArea": {
+                      "properties": {
+                        "value": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "hadbastNo": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "isBasementAreaAvailable": {
+                      "properties": {
+                        "code": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "i18nKey": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "khasraNo": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "layoutAreaType": {
+                      "properties": {
+                        "active": {
+                          "type": "boolean"
+                        },
+                        "code": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "name": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "layoutNonSchemeType": {
+                      "properties": {
+                        "active": {
+                          "type": "boolean"
+                        },
+                        "code": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "name": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "layoutSchemeName": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "netPlotAreaAfterWidening": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "netSiteArea": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "plotNo": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "proposedSiteAddress": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "roadType": {
+                      "properties": {
+                        "active": {
+                          "type": "boolean"
+                        },
+                        "code": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "name": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "roadWidthAtSite": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "schemeType": {
+                      "properties": {
+                        "active": {
+                          "type": "boolean"
+                        },
+                        "code": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "name": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "specificationPlotArea": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "totalAreaUnderLayout": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "totalFloorArea": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "ulbName": {
+                      "properties": {
+                        "OfficeTimings": {
+                          "properties": {
+                            "Mon - Fri": {
+                              "type": "text",
+                              "fields": {
+                                "keyword": {
+                                  "type": "keyword",
+                                  "ignore_above": 256
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "PGRMasterContact": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "address": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "city": {
+                          "properties": {
+                            "code": {
+                              "type": "text",
+                              "fields": {
+                                "keyword": {
+                                  "type": "keyword",
+                                  "ignore_above": 256
+                                }
+                              }
+                            },
+                            "ddrName": {
+                              "type": "text",
+                              "fields": {
+                                "keyword": {
+                                  "type": "keyword",
+                                  "ignore_above": 256
+                                }
+                              }
+                            },
+                            "districtCode": {
+                              "type": "text",
+                              "fields": {
+                                "keyword": {
+                                  "type": "keyword",
+                                  "ignore_above": 256
+                                }
+                              }
+                            },
+                            "districtName": {
+                              "type": "text",
+                              "fields": {
+                                "keyword": {
+                                  "type": "keyword",
+                                  "ignore_above": 256
+                                }
+                              }
+                            },
+                            "districtTenantCode": {
+                              "type": "text",
+                              "fields": {
+                                "keyword": {
+                                  "type": "keyword",
+                                  "ignore_above": 256
+                                }
+                              }
+                            },
+                            "latitude": {
+                              "type": "float"
+                            },
+                            "localName": {
+                              "type": "text",
+                              "fields": {
+                                "keyword": {
+                                  "type": "keyword",
+                                  "ignore_above": 256
+                                }
+                              }
+                            },
+                            "longitude": {
+                              "type": "float"
+                            },
+                            "municipalityName": {
+                              "type": "text",
+                              "fields": {
+                                "keyword": {
+                                  "type": "keyword",
+                                  "ignore_above": 256
+                                }
+                              }
+                            },
+                            "name": {
+                              "type": "text",
+                              "fields": {
+                                "keyword": {
+                                  "type": "keyword",
+                                  "ignore_above": 256
+                                }
+                              }
+                            },
+                            "pwssb": {
+                              "type": "boolean"
+                            },
+                            "pwssbGrade": {
+                              "type": "text",
+                              "fields": {
+                                "keyword": {
+                                  "type": "keyword",
+                                  "ignore_above": 256
+                                }
+                              }
+                            },
+                            "regionCode": {
+                              "type": "text",
+                              "fields": {
+                                "keyword": {
+                                  "type": "keyword",
+                                  "ignore_above": 256
+                                }
+                              }
+                            },
+                            "regionName": {
+                              "type": "text",
+                              "fields": {
+                                "keyword": {
+                                  "type": "keyword",
+                                  "ignore_above": 256
+                                }
+                              }
+                            },
+                            "ulbGrade": {
+                              "type": "text",
+                              "fields": {
+                                "keyword": {
+                                  "type": "keyword",
+                                  "ignore_above": 256
+                                }
+                              }
+                            },
+                            "ulbType": {
+                              "type": "text",
+                              "fields": {
+                                "keyword": {
+                                  "type": "keyword",
+                                  "ignore_above": 256
+                                }
+                              }
+                            }
+                          }
+                        },
+                        "code": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "contactNumber": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "description": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "displayName": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "domainUrl": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "emailId": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "i18nKey": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "logoId": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "name": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "type": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "ulbType": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "villageName": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "wardNo": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "zone": {
+                      "properties": {
+                        "area": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "boundaryNum": {
+                          "type": "long"
+                        },
+                        "code": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "i18nkey": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "label": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        },
+                        "name": {
+                          "type": "text",
+                          "fields": {
+                            "keyword": {
+                              "type": "keyword",
+                              "ignore_above": 256
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "auditDetails": {
+              "properties": {
+                "createdBy": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword",
+                      "ignore_above": 256
+                    }
+                  }
+                },
+                "createdTime": {
+                  "type": "long"
+                },
+                "lastModifiedBy": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword",
+                      "ignore_above": 256
+                    }
+                  }
+                },
+                "lastModifiedTime": {
+                  "type": "long"
+                }
+              }
+            },
+            "id": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "layoutId": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "tenantId": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            }
+          }
+        },
+        "layoutNo": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "layoutType": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "owners": {
+          "properties": {
+            "active": {
+              "type": "boolean"
+            },
+            "createdDate": {
+              "type": "long"
+            },
+            "emailId": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "id": {
+              "type": "long"
+            },
+            "lastModifiedDate": {
+              "type": "long"
+            },
+            "mobileNumber": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "name": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "roles": {
+              "properties": {
+                "code": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword",
+                      "ignore_above": 256
+                    }
+                  }
+                },
+                "name": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword",
+                      "ignore_above": 256
+                    }
+                  }
+                },
+                "tenantId": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword",
+                      "ignore_above": 256
+                    }
+                  }
+                }
+              }
+            },
+            "tenantId": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "type": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "userName": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "uuid": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            }
+          }
+        },
+        "status": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "tenantId": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        }
+      }
+    }
+  }
+}
+[2026-02-04 15:46:20] [INFO    ] [consumer] [layout-application-index] ✓ Index created
+[2026-02-04 15:46:21] [INFO    ] [consumer] [chb-booking-application-index] ✓ Wrote 10 documents
+[2026-02-04 15:46:22] [INFO    ] [consumer] [ndc-application-index] ✓ Wrote 257 documents
+[2026-02-04 15:46:22] [INFO    ] [consumer] [products] ✓ Wrote 6 documents
+[2026-02-04 15:46:22] [INFO    ] [consumer] [challan-generation-index] ✓ Wrote 60 documents
+[2026-02-04 15:46:22] [INFO    ] [consumer] [layout-application-index] ✓ Wrote 16 documents
+[2026-02-04 15:46:51] [INFO    ] [consumer] No more messages to consume (idle for 30 seconds)
+[2026-02-04 15:46:51] [INFO    ] [consumer] Flushing final buffer...
+[2026-02-04 15:46:51] [INFO    ] [consumer] 
+[2026-02-04 15:46:51] [INFO    ] [consumer] ============================================================
+[2026-02-04 15:46:51] [INFO    ] [consumer]   Consumer Summary
+[2026-02-04 15:46:51] [INFO    ] [consumer] ============================================================
+[2026-02-04 15:46:51] [INFO    ] [consumer] Messages consumed: 349
+[2026-02-04 15:46:51] [INFO    ] [consumer] Documents written:  349
+[2026-02-04 15:46:51] [INFO    ] [consumer] Errors:            0
+[2026-02-04 15:46:51] [INFO    ] [consumer] 
+[2026-02-04 15:46:51] [INFO    ] [main] [PHASE 2] Consumer complete.
+
+[2026-02-04 15:46:51] [INFO    ] [main] [PHASE 3] Running validation...
+[2026-02-04 15:46:51] [INFO    ] [validator] Starting migration validation...
+[2026-02-04 15:46:51] [INFO    ] [validator] Auto-discovered 5 indices: ['ndc-application-index', 'chb-booking-application-index', 'challan-generation-index', 'layout-application-index', 'products']
+[2026-02-04 15:46:51] [INFO    ] [validator] [ndc-application-index] old=257  new=257  ✓ MATCH
+[2026-02-04 15:46:51] [WARNING ] [validator] [chb-booking-application-index] old=10  new=13  ⚠ MISMATCH
+[2026-02-04 15:46:51] [INFO    ] [validator] [challan-generation-index] old=60  new=60  ✓ MATCH
+[2026-02-04 15:46:51] [INFO    ] [validator] [layout-application-index] old=16  new=16  ✓ MATCH
+[2026-02-04 15:46:51] [WARNING ] [validator] [products] old=6  new=9  ⚠ MISMATCH
+[2026-02-04 15:46:51] [DEBUG   ] [validator] [ndc-application-index] Doc NDC-1012-2025-26-000048 – OK
+[2026-02-04 15:46:51] [DEBUG   ] [validator] [ndc-application-index] Doc NDC-1012-2025-26-000046 – OK
+[2026-02-04 15:46:51] [DEBUG   ] [validator] [ndc-application-index] Doc NDC-1012-2025-26-001264 – OK
+[2026-02-04 15:46:51] [DEBUG   ] [validator] [ndc-application-index] Doc NDC-1012-2025-26-001260 – OK
+[2026-02-04 15:46:51] [DEBUG   ] [validator] [ndc-application-index] Doc NDC-1012-2025-26-000044 – OK
+[2026-02-04 15:46:51] [DEBUG   ] [validator] [chb-booking-application-index] Doc 8c70e9d1-68ad-48a0-8ab7-243e99170b0b – OK
+[2026-02-04 15:46:52] [DEBUG   ] [validator] [chb-booking-application-index] Doc f236ea17-f360-4d90-9efc-9f4709f6035b – OK
+[2026-02-04 15:46:52] [DEBUG   ] [validator] [chb-booking-application-index] Doc dc66eab8-aab6-4a86-bd41-5f9cb973f583 – OK
+[2026-02-04 15:46:52] [DEBUG   ] [validator] [chb-booking-application-index] Doc 8b045d38-0eba-4f63-b349-b7da873ab484 – OK
+[2026-02-04 15:46:52] [DEBUG   ] [validator] [chb-booking-application-index] Doc 23f06c82-b8d3-44f5-bbcb-490dd272c4e8 – OK
+[2026-02-04 15:46:52] [DEBUG   ] [validator] [challan-generation-index] Doc d9fca9a8-2b45-482d-84de-150a438fb811 – OK
+[2026-02-04 15:46:52] [DEBUG   ] [validator] [challan-generation-index] Doc a3e30123-8660-4b88-a1ee-559821713a24 – OK
+[2026-02-04 15:46:52] [DEBUG   ] [validator] [challan-generation-index] Doc fdb51ba2-82bf-4775-8754-ec07faf439b5 – OK
+[2026-02-04 15:46:52] [DEBUG   ] [validator] [challan-generation-index] Doc a34e5ed5-37e1-4cf1-81e3-c9d6aeb83857 – OK
+[2026-02-04 15:46:52] [DEBUG   ] [validator] [challan-generation-index] Doc cde42305-283d-4586-913b-f62aeab2d086 – OK
+[2026-02-04 15:46:52] [DEBUG   ] [validator] [layout-application-index] Doc 542d60ab-91ca-4191-bb1e-126ecd1504adpb.testing – OK
+[2026-02-04 15:46:52] [DEBUG   ] [validator] [layout-application-index] Doc 8a3d1252-af70-48b2-b0b7-3841c3be127dpb.testing – OK
+[2026-02-04 15:46:52] [DEBUG   ] [validator] [layout-application-index] Doc 0da69d1d-606f-4103-b2e3-176bbfbc84acpb.testing – OK
+[2026-02-04 15:46:52] [DEBUG   ] [validator] [layout-application-index] Doc 4783dd54-d804-48a6-978d-818fcfee54f3pb.testing – OK
+[2026-02-04 15:46:52] [DEBUG   ] [validator] [layout-application-index] Doc 99bc9a19-fc71-4877-9fb2-0b1f7bd412f0pb.testing – OK
+[2026-02-04 15:46:52] [DEBUG   ] [validator] [products] Doc 4yx8J5wBQ8wWNbDWcWgl – OK
+[2026-02-04 15:46:52] [DEBUG   ] [validator] [products] Doc 5Cx8J5wBQ8wWNbDWcWjX – OK
+[2026-02-04 15:46:52] [DEBUG   ] [validator] [products] Doc 5Sx8J5wBQ8wWNbDWcmg1 – OK
+[2026-02-04 15:46:52] [DEBUG   ] [validator] [products] Doc 5ix8J5wBQ8wWNbDWcmiU – OK
+[2026-02-04 15:46:52] [DEBUG   ] [validator] [products] Doc 5yx8J5wBQ8wWNbDWc2gM – OK
+[2026-02-04 15:46:52] [INFO    ] [validator] New cluster health: yellow  (clusters=docker-cluster, nodes=1)
+[2026-02-04 15:46:52] [INFO    ] [validator] 
+======================================================================
+        ELASTICSEARCH MIGRATION VALIDATION REPORT
+        Generated: 2026-02-04 15:46:52
+======================================================================
+
+── CLUSTER HEALTH (new 8.x) ─────────────────────────────────────
+   Status        : YELLOW
+   Cluster name  : docker-cluster
+   Nodes         : 1
+   Shards        : active=50 / unassigned=20
+
+── INDEX COUNT COMPARISON ────────────────────────────────────────
+   Index                                    Old      New   Diff  Status
+   -----------------------------------------------------------------
+   ndc-application-index                    257      257     +0  ✓ MATCH
+   chb-booking-application-index             10       13     +3  ⚠ MISMATCH
+   challan-generation-index                  60       60     +0  ✓ MATCH
+   layout-application-index                  16       16     +0  ✓ MATCH
+   products                                   6        9     +3  ⚠ MISMATCH
+   -----------------------------------------------------------------
+   TOTAL                                    349      355     +6  ⚠ 2 MISMATCH(ES)
+
+── DOCUMENT SAMPLE CHECKS ────────────────────────────────────────
+   ndc-application-index: 5/5 docs match
+   chb-booking-application-index: 5/5 docs match
+   challan-generation-index: 5/5 docs match
+   layout-application-index: 5/5 docs match
+   products: 5/5 docs match
+   Total: 25/25 docs verified
+
+======================================================================
+  END OF REPORT
+======================================================================
+[2026-02-04 15:46:52] [INFO    ] [main] 
+============================================================
+[2026-02-04 15:46:52] [INFO    ] [main]   Migration Complete
+[2026-02-04 15:46:52] [INFO    ] [main] ============================================================
+[2026-02-04 16:03:19] [INFO    ] [main] ============================================================
+[2026-02-04 16:03:19] [INFO    ] [main]   ES 6.4.2 → 8.11 Migration (Kafka-Based)
+[2026-02-04 16:03:19] [INFO    ] [main] ============================================================
+[2026-02-04 16:03:19] [INFO    ] [main] ── Preflight checks ──
+[2026-02-04 16:03:19] [INFO    ] [main] OLD  cluster reachable – version 6.4.2  (http://localhost:9201)
+[2026-02-04 16:03:19] [INFO    ] [main] NEW  cluster reachable – version 8.11.0  (http://localhost:9200)
+[2026-02-04 16:03:20] [INFO    ] [main] KAFKA reachable – 5 topics (localhost:9092)
+[2026-02-04 16:03:20] [INFO    ] [main] ── Preflight OK ──
+
+[2026-02-04 16:03:20] [INFO    ] [main] 
+[PHASE 1] Starting Producer (Old ES → Kafka)...
+[2026-02-04 16:03:20] [INFO    ] [producer] ============================================================
+[2026-02-04 16:03:20] [INFO    ] [producer]   ES → Kafka Producer (Bulk Migration)
+[2026-02-04 16:03:20] [INFO    ] [producer] ============================================================
+[2026-02-04 16:03:20] [INFO    ] [producer] Old ES: http://localhost:9201
+[2026-02-04 16:03:20] [INFO    ] [producer] Kafka:  localhost:9092
+[2026-02-04 16:03:20] [INFO    ] [producer] 
+[2026-02-04 16:03:20] [INFO    ] [producer] Discovered 6 indices to migrate
+[2026-02-04 16:03:20] [INFO    ] [producer] Indices: tl-index, layout-application-index, chb-booking-application-index, ndc-application-index, challan-generation-index, products
+[2026-02-04 16:03:20] [INFO    ] [producer] Creating 1 Kafka topics...
+[2026-02-04 16:03:21] [INFO    ] [producer]   ✓ Topic 'tl-index' created
+[2026-02-04 16:03:23] [INFO    ] [producer] [tl-index] Starting to publish documents...
+[2026-02-04 16:03:24] [INFO    ] [producer] [tl-index] Published 1000 documents...
+[2026-02-04 16:03:24] [INFO    ] [producer] [tl-index] Published 2000 documents...
+[2026-02-04 16:03:24] [INFO    ] [producer] [tl-index] Published 3000 documents...
+[2026-02-04 16:03:24] [INFO    ] [producer] [tl-index] Published 4000 documents...
+[2026-02-04 16:03:24] [INFO    ] [producer] [tl-index] Published 5000 documents...
+[2026-02-04 16:03:26] [INFO    ] [producer] [tl-index] Published 6000 documents...
+[2026-02-04 16:03:26] [INFO    ] [producer] [tl-index] Published 7000 documents...
+[2026-02-04 16:03:26] [INFO    ] [producer] [tl-index] Published 8000 documents...
+[2026-02-04 16:03:26] [INFO    ] [producer] [tl-index] Published 9000 documents...
+[2026-02-04 16:03:26] [INFO    ] [producer] [tl-index] Published 10000 documents...
+[2026-02-04 16:03:28] [INFO    ] [producer] [tl-index] Published 11000 documents...
+[2026-02-04 16:03:28] [INFO    ] [producer] [tl-index] Published 12000 documents...
+[2026-02-04 16:03:28] [INFO    ] [producer] [tl-index] Published 13000 documents...
+[2026-02-04 16:03:28] [INFO    ] [producer] [tl-index] Published 14000 documents...
+[2026-02-04 16:03:29] [INFO    ] [producer] [tl-index] ✓ Published 14798 documents in 6.01 seconds (2464 docs/sec)
+[2026-02-04 16:03:29] [INFO    ] [producer] [layout-application-index] Starting to publish documents...
+[2026-02-04 16:03:29] [INFO    ] [producer] [layout-application-index] ✓ Published 16 documents in 0.11 seconds (152 docs/sec)
+[2026-02-04 16:03:29] [INFO    ] [producer] [chb-booking-application-index] Starting to publish documents...
+[2026-02-04 16:03:29] [INFO    ] [producer] [chb-booking-application-index] ✓ Published 10 documents in 0.02 seconds (620 docs/sec)
+[2026-02-04 16:03:29] [INFO    ] [producer] [ndc-application-index] Starting to publish documents...
+[2026-02-04 16:03:29] [INFO    ] [producer] [ndc-application-index] ✓ Published 257 documents in 0.10 seconds (2544 docs/sec)
+[2026-02-04 16:03:29] [INFO    ] [producer] [challan-generation-index] Starting to publish documents...
+[2026-02-04 16:03:29] [INFO    ] [producer] [challan-generation-index] ✓ Published 60 documents in 0.06 seconds (1039 docs/sec)
+[2026-02-04 16:03:29] [INFO    ] [producer] [products] Starting to publish documents...
+[2026-02-04 16:03:29] [INFO    ] [producer] [products] ✓ Published 6 documents in 0.03 seconds (199 docs/sec)
+[2026-02-04 16:03:29] [INFO    ] [producer] 
+[2026-02-04 16:03:29] [INFO    ] [producer] ============================================================
+[2026-02-04 16:03:29] [INFO    ] [producer]   Producer Summary
+[2026-02-04 16:03:29] [INFO    ] [producer] ============================================================
+[2026-02-04 16:03:29] [INFO    ] [producer] Total documents published: 15147
+[2026-02-04 16:03:29] [INFO    ] [producer] Failed deliveries: 0
+[2026-02-04 16:03:29] [INFO    ] [producer] 
+[2026-02-04 16:03:29] [INFO    ] [main] [PHASE 1] Producer complete.
+
+[2026-02-04 16:03:29] [INFO    ] [main] [PHASE 2] Starting Consumer (Kafka → New ES)...
+[2026-02-04 16:03:29] [INFO    ] [consumer] ============================================================
+[2026-02-04 16:03:29] [INFO    ] [consumer]   Kafka → ES Consumer (Bulk Migration)
+[2026-02-04 16:03:29] [INFO    ] [consumer] ============================================================
+[2026-02-04 16:03:29] [INFO    ] [consumer] Kafka:  localhost:9092
+[2026-02-04 16:03:29] [INFO    ] [consumer] New ES: http://localhost:9200
+[2026-02-04 16:03:29] [INFO    ] [consumer] Batch:  500 documents
+[2026-02-04 16:03:29] [INFO    ] [consumer] 
+[2026-02-04 16:03:29] [INFO    ] [consumer] Subscribing to 6 topics: ['challan-generation-index', 'tl-index', 'ndc-application-index', 'products', 'layout-application-index', 'chb-booking-application-index']
+[2026-02-04 16:03:29] [INFO    ] [consumer] Consuming messages... (Ctrl+C to stop)
+[2026-02-04 16:03:29] [INFO    ] [consumer] 
+[2026-02-04 16:03:32] [INFO    ] [consumer] [challan-generation-index] Index already exists on new cluster
+[2026-02-04 16:03:32] [INFO    ] [consumer] [chb-booking-application-index] Index already exists on new cluster
+[2026-02-04 16:03:32] [INFO    ] [consumer] [layout-application-index] Index already exists on new cluster
+[2026-02-04 16:03:32] [INFO    ] [consumer] [ndc-application-index] Index already exists on new cluster
+[2026-02-04 16:03:32] [INFO    ] [consumer] [products] Index already exists on new cluster
+[2026-02-04 16:03:33] [INFO    ] [consumer] [tl-index] Creating index on new cluster...
+[2026-02-04 16:03:33] [INFO    ] [mapping_transformer] Transforming index 'tl-index' …
+[2026-02-04 16:03:33] [DEBUG   ] [mapping_transformer] Unwrapped mapping type 'tradelicenses'
+[2026-02-04 16:03:33] [DEBUG   ] [mapping_transformer] Removed auto-managed setting 'creation_date'
+[2026-02-04 16:03:33] [DEBUG   ] [mapping_transformer] Removed auto-managed setting 'uuid'
+[2026-02-04 16:03:33] [DEBUG   ] [mapping_transformer] Removed auto-managed setting 'version'
+[2026-02-04 16:03:33] [DEBUG   ] [mapping_transformer] Removed auto-managed setting 'provided_name'
+[2026-02-04 16:03:33] [DEBUG   ] [mapping_transformer] Transformed mapping:
+{
+  "properties": {
+    "accountId": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "action": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "applicationDate": {
+      "type": "long"
+    },
+    "applicationNumber": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "applicationType": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "assignee": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "auditDetails": {
+      "properties": {
+        "createdBy": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "createdTime": {
+          "type": "long"
+        },
+        "lastModifiedBy": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "lastModifiedTime": {
+          "type": "long"
+        }
+      }
+    },
+    "businessService": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "calculation": {
+      "properties": {
+        "accessoryBillingIds": {
+          "properties": {
+            "billingSlabIds": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "fee": {
+              "type": "long"
+            },
+            "id": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            }
+          }
+        },
+        "taxHeadEstimates": {
+          "properties": {
+            "category": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "estimateAmount": {
+              "type": "long"
+            },
+            "taxHeadCode": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            }
+          }
+        },
+        "tenantId": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "tradeTypeBillingIds": {
+          "properties": {
+            "billingSlabIds": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "fee": {
+              "type": "long"
+            },
+            "id": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "commencementDate": {
+      "type": "long"
+    },
+    "comment": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "fileStoreId": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "financialYear": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "id": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "issuedDate": {
+      "type": "long"
+    },
+    "licenseNumber": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "licenseType": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "oldLicenseNumber": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "propertyId": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "status": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "tenantId": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "tradeLicenseDetail": {
+      "properties": {
+        "accessories": {
+          "properties": {
+            "accessoryCategory": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "active": {
+              "type": "boolean"
+            },
+            "count": {
+              "type": "long"
+            },
+            "id": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "tenantId": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "uom": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "uomValue": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            }
+          }
+        },
+        "additionalDetail": {
+          "properties": {
+            "applicationType": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "approveDetail": {
+              "properties": {
+                "approvedBy": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword",
+                      "ignore_above": 256
+                    }
+                  }
+                },
+                "check": {
+                  "type": "boolean"
+                },
+                "checklist": {
+                  "properties": {
+                    "hygieneLevels": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "localityHarmed": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    },
+                    "safetyNorms": {
+                      "type": "text",
+                      "fields": {
+                        "keyword": {
+                          "type": "keyword",
+                          "ignore_above": 256
+                        }
+                      }
+                    }
+                  }
+                },
+                "comments": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword",
+                      "ignore_above": 256
+                    }
+                  }
+                }
+              }
+            },
+            "electricityConnectionNo": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "gstNo": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "islegacy": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "oldReceiptNumber": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "penaltyComments": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "rebateComments": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            }
+          }
+        },
+        "address": {
+          "properties": {
+            "buildingName": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "city": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "doorNo": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "id": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "latitude": {
+              "type": "float"
+            },
+            "locality": {
+              "properties": {
+                "code": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword",
+                      "ignore_above": 256
+                    }
+                  }
+                },
+                "label": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword",
+                      "ignore_above": 256
+                    }
+                  }
+                },
+                "name": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword",
+                      "ignore_above": 256
+                    }
+                  }
+                }
+              }
+            },
+            "longitude": {
+              "type": "float"
+            },
+            "pincode": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "street": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "tenantId": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            }
+          }
+        },
+        "adhocExemption": {
+          "type": "long"
+        },
+        "adhocExemptionReason": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "adhocPenalty": {
+          "type": "long"
+        },
+        "adhocPenaltyReason": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "applicationDocuments": {
+          "properties": {
+            "active": {
+              "type": "boolean"
+            },
+            "documentType": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "fileStoreId": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "id": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "tenantId": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            }
+          }
+        },
+        "auditDetails": {
+          "properties": {
+            "createdBy": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "createdTime": {
+              "type": "long"
+            },
+            "lastModifiedBy": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "lastModifiedTime": {
+              "type": "long"
+            }
+          }
+        },
+        "channel": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "id": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "institution": {
+          "properties": {
+            "active": {
+              "type": "boolean"
+            },
+            "designation": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "id": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "tenantId": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            }
+          }
+        },
+        "noOfEmployees": {
+          "type": "long"
+        },
+        "operationalArea": {
+          "type": "long"
+        },
+        "owners": {
+          "properties": {
+            "accountLocked": {
+              "type": "boolean"
+            },
+            "active": {
+              "type": "boolean"
+            },
+            "altContactNumber": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "correspondenceAddress": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "createdBy": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "createdDate": {
+              "type": "long"
+            },
+            "dob": {
+              "type": "long"
+            },
+            "emailId": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "fatherOrHusbandName": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "gender": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "id": {
+              "type": "long"
+            },
+            "institutionId": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "lastModifiedBy": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "lastModifiedDate": {
+              "type": "long"
+            },
+            "mobileNumber": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "name": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "ownerType": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "pan": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "permanentAddress": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "permanentCity": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "photo": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "pwdExpiryDate": {
+              "type": "long"
+            },
+            "relationship": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "roles": {
+              "properties": {
+                "code": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword",
+                      "ignore_above": 256
+                    }
+                  }
+                },
+                "name": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword",
+                      "ignore_above": 256
+                    }
+                  }
+                },
+                "tenantId": {
+                  "type": "text",
+                  "fields": {
+                    "keyword": {
+                      "type": "keyword",
+                      "ignore_above": 256
+                    }
+                  }
+                }
+              }
+            },
+            "tenantId": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "type": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "userActive": {
+              "type": "boolean"
+            },
+            "userName": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "uuid": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            }
+          }
+        },
+        "structureType": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "subOwnerShipCategory": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "tradeUnits": {
+          "properties": {
+            "active": {
+              "type": "boolean"
+            },
+            "id": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "tenantId": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            },
+            "tradeType": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "tradeName": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    },
+    "validFrom": {
+      "type": "long"
+    },
+    "validTo": {
+      "type": "long"
+    },
+    "wfDocuments": {
+      "properties": {
+        "active": {
+          "type": "boolean"
+        },
+        "documentType": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "fileStoreId": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "id": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "tenantId": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        }
+      }
+    },
+    "workflowCode": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
+      }
+    }
+  }
+}
+[2026-02-04 16:03:40] [INFO    ] [consumer] [tl-index] ✓ Index created
+[2026-02-04 16:03:40] [INFO    ] [consumer] [challan-generation-index] ✓ Wrote 60 documents
+[2026-02-04 16:03:41] [INFO    ] [consumer] [chb-booking-application-index] ✓ Wrote 10 documents
+[2026-02-04 16:03:41] [INFO    ] [consumer] [layout-application-index] ✓ Wrote 16 documents
+[2026-02-04 16:03:41] [INFO    ] [consumer] [ndc-application-index] ✓ Wrote 257 documents
+[2026-02-04 16:03:42] [INFO    ] [consumer] [products] ✓ Wrote 6 documents
+[2026-02-04 16:03:42] [INFO    ] [consumer] [tl-index] ✓ Wrote 151 documents
+[2026-02-04 16:03:42] [INFO    ] [consumer] [tl-index] ✓ Wrote 500 documents
+[2026-02-04 16:03:43] [INFO    ] [consumer] [tl-index] ✓ Wrote 500 documents
+[2026-02-04 16:03:43] [INFO    ] [consumer] [tl-index] ✓ Wrote 500 documents
+[2026-02-04 16:03:44] [INFO    ] [consumer] [tl-index] ✓ Wrote 500 documents
+[2026-02-04 16:03:45] [INFO    ] [consumer] [tl-index] ✓ Wrote 500 documents
+[2026-02-04 16:03:45] [INFO    ] [consumer] [tl-index] ✓ Wrote 500 documents
+[2026-02-04 16:03:49] [INFO    ] [consumer] [tl-index] ✓ Wrote 500 documents
+[2026-02-04 16:03:52] [INFO    ] [consumer] [tl-index] ✓ Wrote 500 documents
+[2026-02-04 16:03:53] [INFO    ] [consumer] [tl-index] ✓ Wrote 500 documents
+[2026-02-04 16:03:53] [INFO    ] [consumer] [tl-index] ✓ Wrote 500 documents
+[2026-02-04 16:03:54] [INFO    ] [consumer] [tl-index] ✓ Wrote 500 documents
+[2026-02-04 16:03:56] [INFO    ] [consumer] [tl-index] ✓ Wrote 500 documents
+[2026-02-04 16:03:56] [INFO    ] [consumer] [tl-index] ✓ Wrote 500 documents
+[2026-02-04 16:03:58] [INFO    ] [consumer] [tl-index] ✓ Wrote 500 documents
+[2026-02-04 16:03:59] [INFO    ] [consumer] [tl-index] ✓ Wrote 500 documents
+[2026-02-04 16:04:00] [INFO    ] [consumer] [tl-index] ✓ Wrote 500 documents
+[2026-02-04 16:04:03] [INFO    ] [consumer] [tl-index] ✓ Wrote 500 documents
+[2026-02-04 16:04:04] [INFO    ] [consumer] [tl-index] ✓ Wrote 500 documents
+[2026-02-04 16:04:05] [INFO    ] [consumer] [tl-index] ✓ Wrote 500 documents
+[2026-02-04 16:04:07] [INFO    ] [consumer] [tl-index] ✓ Wrote 500 documents
+[2026-02-04 16:04:07] [INFO    ] [consumer] [tl-index] ✓ Wrote 500 documents
+[2026-02-04 16:04:09] [INFO    ] [consumer] [tl-index] ✓ Wrote 500 documents
+[2026-02-04 16:04:09] [INFO    ] [consumer] [tl-index] ✓ Wrote 500 documents
+[2026-02-04 16:04:10] [INFO    ] [consumer] [tl-index] ✓ Wrote 500 documents
+[2026-02-04 16:04:11] [INFO    ] [consumer] [tl-index] ✓ Wrote 500 documents
+[2026-02-04 16:04:11] [INFO    ] [consumer] [tl-index] ✓ Wrote 500 documents
+[2026-02-04 16:04:12] [INFO    ] [consumer] [tl-index] ✓ Wrote 500 documents
+[2026-02-04 16:04:12] [INFO    ] [consumer] [tl-index] ✓ Wrote 500 documents
+[2026-02-04 16:04:13] [INFO    ] [consumer] [tl-index] ✓ Wrote 500 documents
+[2026-02-04 16:04:18] [INFO    ] [consumer] [tl-index] ✓ Wrote 147 documents
+[2026-02-04 16:04:43] [INFO    ] [consumer] No more messages to consume (idle for 30 seconds)
+[2026-02-04 16:04:43] [INFO    ] [consumer] Flushing final buffer...
+[2026-02-04 16:04:43] [INFO    ] [consumer] 
+[2026-02-04 16:04:43] [INFO    ] [consumer] ============================================================
+[2026-02-04 16:04:43] [INFO    ] [consumer]   Consumer Summary
+[2026-02-04 16:04:43] [INFO    ] [consumer] ============================================================
+[2026-02-04 16:04:43] [INFO    ] [consumer] Messages consumed: 15147
+[2026-02-04 16:04:43] [INFO    ] [consumer] Documents written:  15147
+[2026-02-04 16:04:43] [INFO    ] [consumer] Errors:            0
+[2026-02-04 16:04:43] [INFO    ] [consumer] 
+[2026-02-04 16:04:43] [INFO    ] [main] [PHASE 2] Consumer complete.
+
+[2026-02-04 16:04:43] [INFO    ] [main] [PHASE 3] Running validation...
+[2026-02-04 16:04:43] [INFO    ] [validator] Starting migration validation...
+[2026-02-04 16:04:43] [INFO    ] [validator] Auto-discovered 6 indices: ['tl-index', 'challan-generation-index', 'ndc-application-index', 'chb-booking-application-index', 'layout-application-index', 'products']
+[2026-02-04 16:04:45] [INFO    ] [validator] [tl-index] old=14798  new=14798  ✓ MATCH
+[2026-02-04 16:04:45] [INFO    ] [validator] [challan-generation-index] old=60  new=60  ✓ MATCH
+[2026-02-04 16:04:45] [INFO    ] [validator] [ndc-application-index] old=257  new=257  ✓ MATCH
+[2026-02-04 16:04:45] [WARNING ] [validator] [chb-booking-application-index] old=10  new=13  ⚠ MISMATCH
+[2026-02-04 16:04:45] [INFO    ] [validator] [layout-application-index] old=16  new=16  ✓ MATCH
+[2026-02-04 16:04:45] [WARNING ] [validator] [products] old=6  new=9  ⚠ MISMATCH
+[2026-02-04 16:04:47] [DEBUG   ] [validator] [challan-generation-index] Doc 19502bd6-d429-44f7-88f9-3d7fc0ec82c4 – OK
+[2026-02-04 16:04:47] [DEBUG   ] [validator] [challan-generation-index] Doc 972d4294-1b74-450a-9908-598c14599bdc – OK
+[2026-02-04 16:04:47] [DEBUG   ] [validator] [challan-generation-index] Doc a555bc9f-e5a0-46e3-8127-b593fa52012f – OK
+[2026-02-04 16:04:47] [DEBUG   ] [validator] [challan-generation-index] Doc 50a7f8a2-5221-42e9-a47d-0827f327be0b – OK
+[2026-02-04 16:04:47] [DEBUG   ] [validator] [challan-generation-index] Doc 196003d2-b62c-47e9-9d84-da112645c4c7 – OK
+[2026-02-04 16:04:47] [DEBUG   ] [validator] [ndc-application-index] Doc NDC-1012-2025-26-000026 – OK
+[2026-02-04 16:04:47] [DEBUG   ] [validator] [ndc-application-index] Doc NDC-1012-2025-26-000069 – OK
+[2026-02-04 16:04:47] [DEBUG   ] [validator] [ndc-application-index] Doc NDC-1012-2025-26-000053 – OK
+[2026-02-04 16:04:47] [DEBUG   ] [validator] [ndc-application-index] Doc NDC-1012-2025-26-000025 – OK
+[2026-02-04 16:04:47] [DEBUG   ] [validator] [ndc-application-index] Doc NDC-1012-2025-26-000120 – OK
+[2026-02-04 16:04:47] [DEBUG   ] [validator] [chb-booking-application-index] Doc f7aefe43-2843-46e0-82b1-3aad3d99603d – OK
+[2026-02-04 16:04:47] [DEBUG   ] [validator] [chb-booking-application-index] Doc f5d65c81-26d2-4fa5-85de-ed1e69e6bcf0 – OK
+[2026-02-04 16:04:47] [DEBUG   ] [validator] [chb-booking-application-index] Doc 8c70e9d1-68ad-48a0-8ab7-243e99170b0b – OK
+[2026-02-04 16:04:47] [DEBUG   ] [validator] [chb-booking-application-index] Doc f236ea17-f360-4d90-9efc-9f4709f6035b – OK
+[2026-02-04 16:04:47] [DEBUG   ] [validator] [chb-booking-application-index] Doc dc66eab8-aab6-4a86-bd41-5f9cb973f583 – OK
+[2026-02-04 16:04:47] [DEBUG   ] [validator] [layout-application-index] Doc 542d60ab-91ca-4191-bb1e-126ecd1504adpb.testing – OK
+[2026-02-04 16:04:47] [DEBUG   ] [validator] [layout-application-index] Doc 8a3d1252-af70-48b2-b0b7-3841c3be127dpb.testing – OK
+[2026-02-04 16:04:47] [DEBUG   ] [validator] [layout-application-index] Doc 0da69d1d-606f-4103-b2e3-176bbfbc84acpb.testing – OK
+[2026-02-04 16:04:47] [DEBUG   ] [validator] [layout-application-index] Doc 4783dd54-d804-48a6-978d-818fcfee54f3pb.testing – OK
+[2026-02-04 16:04:47] [DEBUG   ] [validator] [layout-application-index] Doc 99bc9a19-fc71-4877-9fb2-0b1f7bd412f0pb.testing – OK
+[2026-02-04 16:04:47] [DEBUG   ] [validator] [products] Doc 4yx8J5wBQ8wWNbDWcWgl – OK
+[2026-02-04 16:04:47] [DEBUG   ] [validator] [products] Doc 5Cx8J5wBQ8wWNbDWcWjX – OK
+[2026-02-04 16:04:47] [DEBUG   ] [validator] [products] Doc 5Sx8J5wBQ8wWNbDWcmg1 – OK
+[2026-02-04 16:04:47] [DEBUG   ] [validator] [products] Doc 5ix8J5wBQ8wWNbDWcmiU – OK
+[2026-02-04 16:04:47] [DEBUG   ] [validator] [products] Doc 5yx8J5wBQ8wWNbDWc2gM – OK
+[2026-02-04 16:04:47] [INFO    ] [validator] New cluster health: yellow  (clusters=docker-cluster, nodes=1)
+[2026-02-04 16:04:47] [INFO    ] [validator] 
+======================================================================
+        ELASTICSEARCH MIGRATION VALIDATION REPORT
+        Generated: 2026-02-04 16:04:47
+======================================================================
+
+── CLUSTER HEALTH (new 8.x) ─────────────────────────────────────
+   Status        : YELLOW
+   Cluster name  : docker-cluster
+   Nodes         : 1
+   Shards        : active=55 / unassigned=25
+
+── INDEX COUNT COMPARISON ────────────────────────────────────────
+   Index                                    Old      New   Diff  Status
+   -----------------------------------------------------------------
+   tl-index                               14798    14798     +0  ✓ MATCH
+   challan-generation-index                  60       60     +0  ✓ MATCH
+   ndc-application-index                    257      257     +0  ✓ MATCH
+   chb-booking-application-index             10       13     +3  ⚠ MISMATCH
+   layout-application-index                  16       16     +0  ✓ MATCH
+   products                                   6        9     +3  ⚠ MISMATCH
+   -----------------------------------------------------------------
+   TOTAL                                  15147    15153     +6  ⚠ 2 MISMATCH(ES)
+
+── DOCUMENT SAMPLE CHECKS ────────────────────────────────────────
+   tl-index: 0/0 docs match
+   challan-generation-index: 5/5 docs match
+   ndc-application-index: 5/5 docs match
+   chb-booking-application-index: 5/5 docs match
+   layout-application-index: 5/5 docs match
+   products: 5/5 docs match
+   Total: 25/25 docs verified
+
+======================================================================
+  END OF REPORT
+======================================================================
+[2026-02-04 16:04:47] [INFO    ] [main] 
+============================================================
+[2026-02-04 16:04:47] [INFO    ] [main]   Migration Complete
+[2026-02-04 16:04:47] [INFO    ] [main] ============================================================

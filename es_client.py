@@ -67,8 +67,14 @@ class ESHttpClient:
         """Return list of index names, excluding system / skip indices."""
         resp = self._get("/_cat/indices?format=json").json()
         skip = set(MIGRATION.skip_indices)
-        return [i["index"] for i in resp if not i["index"].startswith(".")
-                and i["index"] not in skip]
+        skip_prefixes = tuple(MIGRATION.skip_index_prefixes)
+        return [
+            i["index"]
+            for i in resp
+            if not i["index"].startswith(".")
+            and i["index"] not in skip
+            and (not skip_prefixes or not i["index"].startswith(skip_prefixes))
+        ]
 
     def get_mapping(self, index: str) -> Dict:
         return self._get(f"/{index}/_mapping").json()
@@ -127,7 +133,7 @@ class ESHttpClient:
         resp = self.session.post(
             f"{self.host}/_bulk",
             data=body,
-            timeout=self.timeout,
+            timeout=MIGRATION.bulk_timeout_sec,
             headers={"Content-Type": "application/x-ndjson"},
         )
         resp.raise_for_status()

@@ -65,7 +65,11 @@ def discover_topics(consumer) -> List[str]:
         logger.info("Using explicit topic list: %s", KAFKA.topics)
         return KAFKA.topics
 
-    all_topics: Set[str] = set(consumer.list_topics(timeout=10).topics.keys())
+    try:
+        all_topics: Set[str] = set(consumer.list_topics(timeout=10).topics.keys())
+    except Exception as exc:
+        logger.warning("Kafka topic discovery failed: %s", exc)
+        return []
     # remove internal Kafka topics
     all_topics = {t for t in all_topics if not t.startswith("__")}
 
@@ -185,9 +189,20 @@ def run_consumer(stop_event: threading.Event = None):
     }
 
     consumer = Consumer(conf)
-    topics   = discover_topics(consumer)
+
+    topics = []
+    for attempt in range(1, 4):
+        topics = discover_topics(consumer)
+        if topics:
+            break
+        wait = min(5 * attempt, 15)
+        logger.warning("Kafka topics unavailable (attempt %d/3); retrying in %ds …",
+                       attempt, wait)
+        time.sleep(wait)
+
     if not topics:
-        logger.error("No Kafka topics found – exiting consumer.")
+        logger.warning("No Kafka topics found / Kafka unreachable – consumer exiting.")
+        consumer.close()
         return
 
     consumer.subscribe(topics)
