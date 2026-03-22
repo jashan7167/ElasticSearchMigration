@@ -47,9 +47,24 @@ curl -X PUT "http://10.44.237.233:30920/paymentsindex-v1-1apr-14dec-2025-26/_set
     }
   }'
 
+curl -X POST "http://10.44.237.233:30920/paymentsindex-v1-temp/_forcemerge?max_num_segments=1"
 
 curl -s "http://10.44.237.233:30920/_nodes/elasticsearch-data-v2-2/stats/indices?pretty" | grep -E "index_total|index_time|flush_total"
 
 curl -s "http://10.44.237.233:30920/_cat/nodes?v&h=name,heap.max,heap.current,heap.percent,ram.max,node.role,ram.percent,ram.current"
 
-curl -s "http://10.44.237.233:30920/_cat/thread_pool?v&h=node_name,name,active,queue,rejected" | awk 'NR==1 || $3!="0" || $4!="0" || $5!="0"'
+curl -s "http://10.44.237.233:30920/_cat/thread_pool?v&h=node_name,name,active,queue,rejected" | awk 'NR==1 || $3!="0" || $4!="0" || $5!="0
+
+
+curl -X PUT "http://10.44.237.233:30920/paymentsindex-v1-temp/_settings" \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "index": {
+      "number_of_replicas"             : 1,
+      "refresh_interval"               : "1s",
+      "translog.durability"            : "request",
+      "translog.flush_threshold_size"  : "512mb",
+      "translog.sync_interval"         : "5s",
+      "merge.scheduler.max_thread_count": 1
+    }
+  }'
